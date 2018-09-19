@@ -69,7 +69,7 @@ driver = webdriver.Remote(
 #Tthen it will perform a task.
 #It loops until there is no exception (break)
 ###################################################################
-driver.get("https://www.dryzz.com")
+driver.get('https://www.dryzz.com')
 while True:
     try: #Try to do the below
         driver.find_element_by_link_text('Projects')
@@ -91,7 +91,7 @@ driver.execute_script('sauce: break')
 ###################################################################
 #This adds notes to the command window in Sauce Labs dashboard
 ###################################################################
-driver.execute_script("sauce:context=Place words here for notes")
+driver.execute_script('sauce:context=Place words here for notes')
 
 ###################################################################
 #Take screenshot
@@ -108,8 +108,8 @@ driver.execute_script('sauce: job-result=failed')
 ###################################################################
 # This opens a file to increment the number
 ###################################################################
-def getNumber(filename="countFile.txt"):
-    with open(filename, "r+") as f:
+def getNumber(filename='countFile.txt'):
+    with open(filename, 'r+') as f:
         val = int(f.read() or 0) + 1
         f.seek(0)
         f.truncate()

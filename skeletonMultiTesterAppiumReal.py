@@ -15,7 +15,7 @@ androidTest = False
 iosTest = False
 
 ###################################################################
-# This makes the functions below execute "run" amount of times
+# This makes the functions below execute 'run' amount of times
 ###################################################################
 
 run = 3
@@ -69,10 +69,10 @@ def run_sauce_test():
     sauceParameters = {}
     sauceParameters.update(projectParameters)
     if androidTest != True and iosTest != True: 
-        print "You need to specify a platform to test on!"
+        print('You need to specify a platform to test on!')
         sys.exit()    
     elif androidTest == True and iosTest == True: 
-        print "Don't be greedy! Only choose one platform!"
+        print('Don\'t be greedy! Only choose one platform!')
         sys.exit()    
     elif androidTest:
         sauceParameters.update(androidParameters)
@@ -91,11 +91,11 @@ def run_sauce_test():
     # Test logic goes here
     ###################################################################
     
-    #driver.get("https://phillip3369.wixsite.com/phill")
+    #driver.get('https://phillip3369.wixsite.com/phill')
     
     interact = driver.find_element_by_id('comp-jkemo43ginput')
     interact.clear()
-    interact.send_keys("poop")
+    interact.send_keys('poop')
     
     driver.save_screenshot('screenshot.png') 
     

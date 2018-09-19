@@ -18,7 +18,7 @@ from reusableFxns import *
 
 
 ###################################################################
-# This makes the functions below execute "run" amount of times
+# This makes the functions below execute 'run' amount of times
 ###################################################################
 
 run = 30
@@ -69,16 +69,16 @@ def run_sauce_test():
     ###################################################################
     # Test logic goes here
     ###################################################################
-    driver.get("https://www.dryzz.com")
+    driver.get('https://www.dryzz.com')
 
     interact = driver.find_element_by_id('menu-item-112')
     interact.click()
 
     #driver.save_screenshot('screenshot.png')
-    #interact.send_keys("Dryzz")
+    #interact.send_keys('Dryzz')
     #interact.submit()
     #driver.execute_script('sauce: break')
-    #driver.execute_script("sauce:context=Place words here for notes")
+    #driver.execute_script('sauce:context=Place words here for notes')
     driver.quit()
 
 

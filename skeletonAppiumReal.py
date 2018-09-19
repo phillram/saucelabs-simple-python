@@ -18,8 +18,8 @@ iosTest = False
 # Uncomment one of those lines
 ###################################################################
 
-#androidTest = True
-iosTest = True
+androidTest = True
+#iosTest = True
 
 
 ###################################################################
@@ -56,10 +56,10 @@ iosParameters = { #Define iOS Parameters here
 sauceParameters = {}
 sauceParameters.update(projectParameters)
 if androidTest != True and iosTest != True: 
-    print("You need to specify a platform to test on!")
+    print('You need to specify a platform to test on!')
     sys.exit()    
 elif androidTest == True and iosTest == True: 
-    print("Don't be greedy! Only choose one platform!")
+    print('Don\'t be greedy! Only choose one platform!')
     sys.exit()
 elif androidTest:
     sauceParameters.update(androidParameters)
@@ -88,8 +88,8 @@ interact.click()
 
 driver.save_screenshot('screenshot.png')
 
-#interact.send_keys("Dryzz")
+#interact.send_keys('Dryzz')
 #interact.submit()
 #driver.execute_script('sauce: break')
-#driver.execute_script("sauce:context=Place words here for notes")
+#driver.execute_script('sauce:context=Place words here for notes')
 driver.quit()
