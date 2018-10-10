@@ -9,6 +9,7 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+from selenium.webdriver.common.action_chains import ActionChains
 import os
 import time
 from datetime import datetime
@@ -20,14 +21,17 @@ from reusableFxns import *
 # For Sauce Labs Tests
 ###################################################################
 sauceParameters = {
-    'tags':['Case', '11111',],
+    'tags':['Case', 'NUM',],
     'platform': 'Windows 10',
     'browserName': 'chrome',
     'version': 'latest',
     'screenResolution':'1920x1080',
     'name': 'Run: ' + getNumber(),
+    #'tunnelIdentifier':'Phill Tunnel One',
     #'seleniumVersion': '3.8.1',
-    #'iedriverVersion': '3.4.0',
+    #'ieDriverVersion': '3.4.0',
+    #'chromedriverVersion': '2.40',
+    #'requireWindowFocus' : True,
     #'maxDuration': 1800,
     #'idleTimeout': 1000,
     #'commandTimeout': 600,
@@ -62,6 +66,11 @@ driver.get('https://www.dryzz.com')
 interact = driver.find_element_by_id('menu-item-112')
 interact.click()
 
+#interact = driver.find_element_by_class_name('figure')
+#sleep(10)
+#print('Message')
+#ActionChains(driver).move_to_element(interact).perform()
+
 #driver.save_screenshot('screenshot.png')
 #interact.send_keys('Dryzz')
 #interact.submit()
@@ -69,3 +78,4 @@ interact.click()
 #driver.execute_script('sauce:context=Place words here for notes')
 
 driver.quit()
+
