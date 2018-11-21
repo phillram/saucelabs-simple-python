@@ -38,9 +38,9 @@ projectParameters = {
     'tags':['Case', '1111',],
     'appiumVersion': '1.8.1',
     'name': 'Run: ' + getNumber(),
-    #'autoAcceptAlerts':'true',
-    #'locationServicesEnabled':'true',
-    #'locationServicesAuthorized':'true',
+    # 'autoAcceptAlerts':'true',
+    # 'locationServicesEnabled':'true',
+    # 'locationServicesAuthorized':'true',
 }
 
 androidParameters = { #Define Android parameters here
@@ -56,7 +56,7 @@ iosParameters = { #Define iOS Parameters here
     'deviceOrientation' : 'portrait',
     'platformVersion' : '11.3',
     'platformName' : 'iOS',
-    
+    # 'nativeWebTap': True, # iOS only capability.
 }
 
 ###################################################################
@@ -97,21 +97,40 @@ driver = webdriver.Remote(
 ###################################################################
 # Test logic goes here
 ###################################################################
-
+# Navigating to a website
+#__________________________________________________________________
 driver.get('https://www.dryzz.com')
 
-interact = driver.find_element_by_id('site-navigation')
-interact.click()
-
+# Setup for finding an element and clicking it
+#__________________________________________________________________
 interact = driver.find_element_by_id('menu-item-112')
 interact.click()
 
-#driver.save_screenshot('screenshot.png')
-#interact.send_keys('Dryzz')
-#interact.submit()
-#driver.execute_script('sauce: break')
-#driver.execute_script('sauce:context=Place words here for notes')
+# Setup for finding an element and sending keystrokes
+#__________________________________________________________________
+# interact = driver.find_element_by_class_name('figure')
+# interact.send_keys('Dryzz')
+# interact.submit()
+
+# Setup for using random Python commands
+#__________________________________________________________________
+# driver.save_screenshot('screenshot.png')
+# sleep(10)
+# print('Message')
+
+# Setup for using Action chains
+#__________________________________________________________________
+# ActionChains(driver).move_to_element(interact).perform()
+
+# Setup for random script executions
+#__________________________________________________________________
+# driver.execute_script('sauce: break')
+# driver.execute_script('sauce:context=Place words here for notes')
+
+# Ending the test session
+#__________________________________________________________________
 driver.quit()
+
 
 
 

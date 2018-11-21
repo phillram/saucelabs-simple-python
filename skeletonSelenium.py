@@ -27,23 +27,30 @@ sauceParameters = {
     'version': 'latest',
     'screenResolution':'1920x1080',
     'name': 'Run: ' + getNumber(),
-    #'tunnelIdentifier':'Phill Tunnel One',
-    #'seleniumVersion': '3.8.1',
-    #'ieDriverVersion': '3.4.0',
-    #'chromedriverVersion': '2.40',
-    #'requireWindowFocus' : True,
-    #'maxDuration': 1800,
-    #'idleTimeout': 1000,
-    #'commandTimeout': 600,
-    #'videoUploadOnPass':False,
-    #'extendedDebugging':'true',
-    #'prerun':{ 
-        #'executable': 'https://gist.githubusercontent.com/phillram/92a0f22db47892e4b27d04066084ce92/raw/aaeee222780e4ad8647667b267d81684d6059b5c/set_agent.sh',
-        #'args': '',
-        #'background': 'true',
-    #},
-    #'chromeOptions':{
-        #mobileEmulation':{'deviceName':'iPhone X'}
+    # 'tunnelIdentifier':'Phill Tunnel One',
+    # 'seleniumVersion': '3.8.1',
+    # 'ieDriverVersion': '3.4.0',
+    # 'chromedriverVersion': '2.40',
+    # 'requireWindowFocus' : True,
+    # 'maxDuration': 1800,
+    # 'idleTimeout': 1000,
+    # 'commandTimeout': 600,
+    # 'videoUploadOnPass':False,
+    # 'extendedDebugging':'true',
+    # 'prerun':{ 
+    #     'executable': 'https://gist.githubusercontent.com/phillram/92a0f22db47892e4b27d04066084ce92/raw/aaeee222780e4ad8647667b267d81684d6059b5c/set_agent.sh',
+    #     'args': '',
+    #     'background': 'true',
+    # },
+    # 'chromeOptions':{
+    #     #mobileEmulation':{'deviceName':'iPhone X'},
+    #     'prefs': {
+    #         'profile': {
+    #             'password_manager_enabled': False
+    #             },
+    #             'credentials_enable_service': False,
+    #         },
+    #         'args': ['test-type', 'disable-infobars'],
     # },
 }
 
@@ -60,22 +67,37 @@ driver = webdriver.Remote(
 ###################################################################
 # Test logic goes here
 ###################################################################
+# Navigating to a website
+#__________________________________________________________________
 driver.get('https://www.dryzz.com')
 
-
+# Setup for finding an element and clicking it
+#__________________________________________________________________
 interact = driver.find_element_by_id('menu-item-112')
 interact.click()
 
-#interact = driver.find_element_by_class_name('figure')
-#sleep(10)
-#print('Message')
-#ActionChains(driver).move_to_element(interact).perform()
+# Setup for finding an element and sending keystrokes
+#__________________________________________________________________
+# interact = driver.find_element_by_class_name('figure')
+# interact.send_keys('Dryzz')
+# interact.submit()
 
-#driver.save_screenshot('screenshot.png')
-#interact.send_keys('Dryzz')
-#interact.submit()
-#driver.execute_script('sauce: break')
-#driver.execute_script('sauce:context=Place words here for notes')
+# Setup for using random Python commands
+#__________________________________________________________________
+# driver.save_screenshot('screenshot.png')
+# sleep(10)
+# print('Message')
 
+# Setup for using Action chains
+#__________________________________________________________________
+# ActionChains(driver).move_to_element(interact).perform()
+
+# Setup for random script executions
+#__________________________________________________________________
+# driver.execute_script('sauce: break')
+# driver.execute_script('sauce:context=Place words here for notes')
+
+# Ending the test session
+#__________________________________________________________________
 driver.quit()
 

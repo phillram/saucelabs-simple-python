@@ -25,8 +25,8 @@ run = 3
 # Uncomment one of those lines
 ###################################################################
 
-#androidTest = True
-#iosTest = True
+# androidTest = True
+# iosTest = True
 
 
 ###################################################################
@@ -42,7 +42,7 @@ def run_sauce_test():
         'testobject_api_key' : 'APIKEY', #The API generated for the Test Object project
         'appiumVersion': '1.8.1',
         'name': 'Run: ' + getNumber(),
-
+        # 'nativeWebTap': True,
     }
     
     androidParameters = { #Define Android parameters here
@@ -90,16 +90,41 @@ def run_sauce_test():
     ###################################################################
     # Test logic goes here
     ###################################################################
-    
-    #driver.get('https://phillip3369.wixsite.com/phill')
-    
-    interact = driver.find_element_by_id('comp-jkemo43ginput')
-    interact.clear()
-    interact.send_keys('poop')
-    
-    driver.save_screenshot('screenshot.png') 
-    
+    # Navigating to a website
+    #__________________________________________________________________
+    driver.get('https://www.dryzz.com')
+
+    # Setup for finding an element and clicking it
+    #__________________________________________________________________
+    interact = driver.find_element_by_id('menu-item-112')
+    interact.click()
+
+    # Setup for finding an element and sending keystrokes
+    #__________________________________________________________________
+    # interact = driver.find_element_by_class_name('figure')
+    # interact.send_keys('Dryzz')
+    # interact.submit()
+
+    # Setup for using random Python commands
+    #__________________________________________________________________
+    # driver.save_screenshot('screenshot.png')
+    # sleep(10)
+    # print('Message')
+
+    # Setup for using Action chains
+    #__________________________________________________________________
+    # ActionChains(driver).move_to_element(interact).perform()
+
+    # Setup for random script executions
+    #__________________________________________________________________
+    # driver.execute_script('sauce: break')
+    # driver.execute_script('sauce:context=Place words here for notes')
+
+    # Ending the test session
+    #__________________________________________________________________
     driver.quit()
+
+
 
 
 
@@ -115,5 +140,5 @@ if __name__ == '__main__':
         p = multiprocessing.Process(target=run_sauce_test) #Define what function to run multiple times.
         jobs.append(p) # Add to the array.
         p.start() #Start the functions.
-        #print('this is the run for: '+ str(i))
+        # print('this is the run for: '+ str(i))
 

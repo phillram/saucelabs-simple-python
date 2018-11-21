@@ -12,8 +12,8 @@ from pathlib import Path
 # This opens a file to increment the number
 ###################################################################
 
-#countFilePath = Path('saucelabs-simple-python\countFile.txt')
-countFilePath = Path('python/CaseTesting/countFile.txt')
+countFilePath = Path('countFile.txt')
+# countFilePath = Path('python/CaseTesting/countFile.txt')
 
 def getNumber(filename = countFilePath):
         with open(filename, "r+") as f:

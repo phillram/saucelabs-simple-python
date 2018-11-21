@@ -21,7 +21,7 @@ from reusableFxns import *
 # This makes the functions below execute 'run' amount of times
 ###################################################################
 
-run = 30
+run = 3
 
 ###################################################################
 # Declare as a function in order to do multiple runs
@@ -33,7 +33,7 @@ def run_sauce_test():
     # For Sauce Labs Tests
     ###################################################################    
     sauceParameters = {
-        'tags':['Case', '11111',],
+        'tags':['Case', 'NUM',],
         'platform': 'Windows 10',
         'browserName': 'chrome',
         'version': 'latest',
@@ -51,8 +51,15 @@ def run_sauce_test():
             #'args': '',
             #'background': 'true',
         #},
-        #'chromeOptions':{
-            #mobileEmulation':{'deviceName':'iPhone X'}
+        # 'chromeOptions':{
+        #     mobileEmulation':{'deviceName':'iPhone X'},
+        #     'prefs': {
+        #         'profile': {
+        #             'password_manager_enabled': False
+        #             },
+        #             'credentials_enable_service': False,
+        #         },
+        #         'args': ['test-type', 'disable-infobars'],
         # },
     }
 
@@ -69,17 +76,41 @@ def run_sauce_test():
     ###################################################################
     # Test logic goes here
     ###################################################################
+    # Navigating to a website
+    #__________________________________________________________________
     driver.get('https://www.dryzz.com')
 
+    # Setup for finding an element and clicking it
+    #__________________________________________________________________
     interact = driver.find_element_by_id('menu-item-112')
     interact.click()
 
-    #driver.save_screenshot('screenshot.png')
-    #interact.send_keys('Dryzz')
-    #interact.submit()
-    #driver.execute_script('sauce: break')
-    #driver.execute_script('sauce:context=Place words here for notes')
+    # Setup for finding an element and sending keystrokes
+    #__________________________________________________________________
+    # interact = driver.find_element_by_class_name('figure')
+    # interact.send_keys('Dryzz')
+    # interact.submit()
+
+    # Setup for using random Python commands
+    #__________________________________________________________________
+    # driver.save_screenshot('screenshot.png')
+    # sleep(10)
+    # print('Message')
+
+    # Setup for using Action chains
+    #__________________________________________________________________
+    # ActionChains(driver).move_to_element(interact).perform()
+
+    # Setup for random script executions
+    #__________________________________________________________________
+    # driver.execute_script('sauce: break')
+    # driver.execute_script('sauce:context=Place words here for notes')
+
+    # Ending the test session
+    #__________________________________________________________________
     driver.quit()
+
+
 
 
 ###################################################################
@@ -93,5 +124,5 @@ if __name__ == '__main__':
         p = multiprocessing.Process(target=run_sauce_test) #Define what function to run multiple times.
         jobs.append(p) # Add to the array.
         p.start() #Start the functions.
-        #print('this is the run for: '+ str(i))
+        # print('this is the run for: '+ str(i))
 

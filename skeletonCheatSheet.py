@@ -25,7 +25,7 @@ from time import sleep
 ###################################################################
 
 sauceParameters = {
-    'tags':['Case', '11111',],
+    'tags':['Case', 'NUM',],
     'platform': 'Windows 10',
     'browserName': 'chrome',
     'version': 'latest',

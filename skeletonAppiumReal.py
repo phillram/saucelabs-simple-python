@@ -19,7 +19,7 @@ iosTest = False
 ###################################################################
 
 androidTest = True
-#iosTest = True
+# iosTest = True
 
 
 ###################################################################
@@ -46,7 +46,7 @@ iosParameters = { #Define iOS Parameters here
     'browserName' : 'safari',
     'platformVersion' : '12',
     'platformName' : 'iOS',
-    
+    # 'nativeWebTap': True, # iOS only capability.
 }
 
 ###################################################################
@@ -77,19 +77,38 @@ driver = webdriver.Remote(
 ###################################################################
 # Test logic goes here
 ###################################################################
-
+# Navigating to a website
+#__________________________________________________________________
 driver.get('https://www.dryzz.com')
 
-interact = driver.find_element_by_id('site-navigation')
-interact.click()
-
+# Setup for finding an element and clicking it
+#__________________________________________________________________
 interact = driver.find_element_by_id('menu-item-112')
 interact.click()
 
-driver.save_screenshot('screenshot.png')
+# Setup for finding an element and sending keystrokes
+#__________________________________________________________________
+# interact = driver.find_element_by_class_name('figure')
+# interact.send_keys('Dryzz')
+# interact.submit()
 
-#interact.send_keys('Dryzz')
-#interact.submit()
-#driver.execute_script('sauce: break')
-#driver.execute_script('sauce:context=Place words here for notes')
+# Setup for using random Python commands
+#__________________________________________________________________
+# driver.save_screenshot('screenshot.png')
+# sleep(10)
+# print('Message')
+
+# Setup for using Action chains
+#__________________________________________________________________
+# ActionChains(driver).move_to_element(interact).perform()
+
+# Setup for random script executions
+#__________________________________________________________________
+# driver.execute_script('sauce: break')
+# driver.execute_script('sauce:context=Place words here for notes')
+
+# Ending the test session
+#__________________________________________________________________
 driver.quit()
+
+
