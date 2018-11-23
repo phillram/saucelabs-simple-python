@@ -21,7 +21,7 @@ from reusableFxns import *
 # This makes the functions below execute 'run' amount of times
 ###################################################################
 
-run = 3
+run = 2
 
 ###################################################################
 # Declare as a function in order to do multiple runs

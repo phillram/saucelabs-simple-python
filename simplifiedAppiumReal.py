@@ -1,3 +1,8 @@
+####################################################################
+# Minimal script to connect to Test Object
+####################################################################
+
+
 from appium import webdriver
 from time import sleep
 
@@ -8,7 +13,7 @@ sauceParameters = {
     'browserName' : 'Chrome',
     'platformVersion' : '9',
     'platformName' : 'Android',
-    'testobject_api_key' : 'APIKEY',
+    'testobject_api_key' : 'APIKEY', #Plug in your project API key here
 }
 
 

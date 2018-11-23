@@ -18,7 +18,7 @@ iosTest = False
 # This makes the functions below execute 'run' amount of times
 ###################################################################
 
-run = 3
+run = 2
 
 ###################################################################
 # Choose if you want Android of iOS capabilities
