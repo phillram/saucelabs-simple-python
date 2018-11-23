@@ -13,10 +13,9 @@ from pathlib import Path
 ###################################################################
 
 countFilePath = Path('countFile.txt')
-# countFilePath = Path('python/CaseTesting/countFile.txt')
 
 def getNumber(filename = countFilePath):
-        with open(filename, "r+") as countingFile:
+        with open(countFilePath, "r+") as countingFile:
                 val = int(countingFile.read() or 0) + 1
                 countingFile.seek(0)
                 countingFile.truncate()
