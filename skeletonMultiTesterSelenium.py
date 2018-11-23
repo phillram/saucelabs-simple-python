@@ -39,18 +39,18 @@ def run_sauce_test():
         'version': 'latest',
         'screenResolution':'1920x1080',
         'name': 'Run: ' + getNumber(),
-        #'seleniumVersion': '3.8.1',
-        #'iedriverVersion': '3.4.0',
-        #'maxDuration': 1800,
-        #'idleTimeout': 1000,
-        #'commandTimeout': 600,
-        #'videoUploadOnPass':False,
-        #'extendedDebugging':'true',
-        #'prerun':{ 
-            #'executable': 'https://gist.githubusercontent.com/phillram/92a0f22db47892e4b27d04066084ce92/raw/aaeee222780e4ad8647667b267d81684d6059b5c/set_agent.sh',
-            #'args': '',
-            #'background': 'true',
-        #},
+        # 'seleniumVersion': '3.8.1',
+        # 'iedriverVersion': '3.4.0',
+        # 'maxDuration': 1800,
+        # 'idleTimeout': 1000,
+        # 'commandTimeout': 600,
+        # 'videoUploadOnPass':False,
+        # 'extendedDebugging':'true',
+        # 'prerun':{ 
+        #     'executable': 'https://gist.githubusercontent.com/phillram/92a0f22db47892e4b27d04066084ce92/raw/aaeee222780e4ad8647667b267d81684d6059b5c/set_agent.sh',
+        #     'args': '',
+        #     'background': 'true',
+        # },
         # 'chromeOptions':{
         #     mobileEmulation':{'deviceName':'iPhone X'},
         #     'prefs': {
@@ -119,10 +119,10 @@ def run_sauce_test():
 ###################################################################
 
 if __name__ == '__main__':
-    jobs = [] #Array for the jobs
+    jobs = [] # Array for the jobs
     for i in range(run): # Run the amount of times set above
-        jobRun = multiprocessing.Process(target=run_sauce_test) #Define what function to run multiple times.
+        jobRun = multiprocessing.Process(target=run_sauce_test) # Define what function to run multiple times.
         jobs.append(jobRun) # Add to the array.
-        jobRun.start() #Start the functions.
+        jobRun.start() # Start the functions.
         # print('this is the run for: '+ str(i))
 

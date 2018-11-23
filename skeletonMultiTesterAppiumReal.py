@@ -39,13 +39,13 @@ def run_sauce_test():
     # For Test Object tests
     ###################################################################
     projectParameters = {
-        'testobject_api_key' : 'APIKEY', #The API generated for the Test Object project
+        'testobject_api_key' : 'APIKEY', # The API generated for the Test Object project
         'appiumVersion': '1.8.1',
         'name': 'Run: ' + getNumber(),
         # 'nativeWebTap': True,
     }
     
-    androidParameters = { #Define Android parameters here
+    androidParameters = { # Define Android parameters here
         'deviceName' : 'Google Pixel',
         'platformVersion' : '9',
         'browserName' : 'Chrome',
@@ -53,7 +53,7 @@ def run_sauce_test():
         'platformName' : 'Android',
     }
     
-    iosParameters = { #Define iOS Parameters here
+    iosParameters = { # Define iOS Parameters here
         'deviceName' : 'iPhone X',
         'deviceOrientation' : 'portrait',
         'browserName' : 'safari',

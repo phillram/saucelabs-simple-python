@@ -15,7 +15,7 @@ sauceParameters = {
     'browserName' : 'Chrome',
     'platformVersion' : '9',
     'platformName' : 'Android',
-    'testobject_api_key' : 'APIKEY', #Plug in your project API key here
+    'testobject_api_key' : 'APIKEY', # Plug in your project API key here
 }
 
 

@@ -43,7 +43,7 @@ sauceParameters = {
     #     'background': 'true',
     # },
     # 'chromeOptions':{
-        # mobileEmulation':{'deviceName':'iPhone X'},
+    #     mobileEmulation':{'deviceName':'iPhone X'},
     #     'prefs': {
     #         'profile': {
     #             'password_manager_enabled': False

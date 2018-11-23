@@ -31,20 +31,20 @@ sauceParameters = {
     'version': 'latest',
     'screenResolution':'1920x1080',
     'name': 'Run: ' + getNumber(),
-    #'seleniumVersion': '3.8.1',
-    #'iedriverVersion': '3.4.0',
-    #'maxDuration': 1800,
-    #'idleTimeout': 1000,
-    #'commandTimeout': 600,
-    #'videoUploadOnPass':False,
-    #'extendedDebugging':'true',
-    #'prerun':{ 
-        #'executable': 'https://gist.githubusercontent.com/phillram/92a0f22db47892e4b27d04066084ce92/raw/aaeee222780e4ad8647667b267d81684d6059b5c/set_agent.sh',
-        #'args': '',
-        #'background': 'true',
-    #},
-    #'chromeOptions':{
-        #mobileEmulation':{'deviceName':'iPhone X'}
+    # 'seleniumVersion': '3.8.1',
+    # 'iedriverVersion': '3.4.0',
+    # 'maxDuration': 1800,
+    # 'idleTimeout': 1000,
+    # 'commandTimeout': 600,
+    # 'videoUploadOnPass':False,
+    # 'extendedDebugging':'true',
+    # 'prerun':{ 
+    #     'executable': 'https://gist.githubusercontent.com/phillram/92a0f22db47892e4b27d04066084ce92/raw/aaeee222780e4ad8647667b267d81684d6059b5c/set_agent.sh',
+    #     'args': '',
+    #     'background': 'true',
+    # },
+    # 'chromeOptions':{
+    #     mobileEmulation':{'deviceName':'iPhone X'}
     # },
 }
 
@@ -71,10 +71,10 @@ driver = webdriver.Remote(
 ###################################################################
 driver.get('https://www.dryzz.com')
 while True:
-    try: #Try to do the below
+    try: # Try to do the below
         driver.find_element_by_link_text('Projects')
-        break #If element found then break out of while loop
-    except: #perform these actions if there is an exception
+        break # If element found then break out of while loop
+    except: # Perform these actions if there is an exception
         interact = driver.find_element_by_name('username')
         interact.send_keys('test_user_mcgoo')
         interact = driver.find_element_by_name('password')

@@ -19,15 +19,15 @@ useApp = False
 # Uncomment one of those lines
 ###################################################################
 
-#androidTest = True
-#iosTest = True
+# androidTest = True
+# iosTest = True
 
 ###################################################################
 # Uncomment if this is an app test
 # Add in the location to the stored app too
 ###################################################################
 
-#useApp = True
+# useApp = True
 appLocation = 'sauce-storage:app.apk'
 
 ###################################################################
@@ -43,7 +43,7 @@ projectParameters = {
     # 'locationServicesAuthorized':'true',
 }
 
-androidParameters = { #Define Android parameters here
+androidParameters = { # Define Android parameters here
     'deviceName' : 'Google Pixel GoogleAPI Emulator',
     'platformVersion' : '7.1',
     'platformName' : 'Android',
@@ -51,7 +51,7 @@ androidParameters = { #Define Android parameters here
 
 }
 
-iosParameters = { #Define iOS Parameters here
+iosParameters = { # Define iOS Parameters here
     'deviceName' : 'iPhone X Simulator',
     'deviceOrientation' : 'portrait',
     'platformVersion' : '11.3',
@@ -77,9 +77,9 @@ elif androidTest == True and iosTest == True:
 elif androidTest:
     sauceParameters.update(androidParameters)
     if useApp:
-        sauceParameters['app'] = appLocation #Use app if it's specified
+        sauceParameters['app'] = appLocation # Use app if it's specified
     else:
-        sauceParameters['browserName'] = 'Chrome' #otherwise use browser
+        sauceParameters['browserName'] = 'Chrome' # Otherwise use browser
 elif iosTest:
     sauceParameters.update(iosParameters)
     if useApp:
