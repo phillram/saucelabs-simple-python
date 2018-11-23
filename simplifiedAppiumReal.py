@@ -1,5 +1,7 @@
 ####################################################################
 # Minimal script to connect to Test Object
+# All this does is connect to your project and start a test
+# wait 30 seconds. Then quit test
 ####################################################################
 
 
