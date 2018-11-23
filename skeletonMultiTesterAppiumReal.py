@@ -137,8 +137,8 @@ def run_sauce_test():
 if __name__ == '__main__':
     jobs = [] #Array for the jobs
     for i in range(run): # Run the amount of times set above
-        p = multiprocessing.Process(target=run_sauce_test) #Define what function to run multiple times.
-        jobs.append(p) # Add to the array.
-        p.start() #Start the functions.
+        jobRun = multiprocessing.Process(target=run_sauce_test) #Define what function to run multiple times.
+        jobs.append(jobRun) # Add to the array.
+        jobRun.start() #Start the functions.
         # print('this is the run for: '+ str(i))
 
