@@ -108,15 +108,17 @@ driver.execute_script('sauce: job-result=failed')
 ###################################################################
 # This opens a file to increment the number
 ###################################################################
-def getNumber(filename='countFile.txt'):
-    with open(filename, 'r+') as f:
-        val = int(f.read() or 0) + 1
-        f.seek(0)
-        f.truncate()
-        f.write(str(val))
-        f.close()
-        #print ('This is test Run: ' + str(val))
-        return str(val)
+countFilePath = Path('countFile.txt')
+
+def getNumber(filename = countFilePath):
+        with open(countFilePath, "r+") as countingFile:
+                val = int(countingFile.read() or 0) + 1
+                countingFile.seek(0)
+                countingFile.truncate()
+                countingFile.write(str(val))
+                countingFile.close()
+                # print ('This is test run: ' + str(val))
+                return str(val)
 
 
 
