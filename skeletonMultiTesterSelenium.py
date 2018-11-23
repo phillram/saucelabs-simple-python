@@ -70,7 +70,7 @@ def run_sauce_test():
     # Connect to Sauce Labs
     ###################################################################
     driver = webdriver.Remote(
-        command_executor='http://'+os.environ['SAUCE_USERNAME']+':'+os.environ['SAUCE_ACCESS_KEY']+'@ondemand.saucelabs.com:80/wd/hub',
+        command_executor='https://'+os.environ['SAUCE_USERNAME']+':'+os.environ['SAUCE_ACCESS_KEY']+'@ondemand.saucelabs.com:443/wd/hub',
         desired_capabilities=sauceParameters)
     
     ###################################################################
