@@ -29,7 +29,7 @@ sauceParameters = {
     'name': 'Run: ' + getNumber(),
     # 'tunnelIdentifier':'Phill Tunnel One',
     # 'seleniumVersion': '3.8.1',
-    # 'ieDriverVersion': '3.4.0',
+    # 'iedriverVersion': '3.4.0',
     # 'chromedriverVersion': '2.40',
     # 'requireWindowFocus' : True,
     # 'maxDuration': 1800,
