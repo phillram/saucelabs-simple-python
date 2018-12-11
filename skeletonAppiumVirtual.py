@@ -79,7 +79,8 @@ elif androidTest:
     if useApp:
         sauceParameters['app'] = appLocation # Use app if it's specified
     else:
-        sauceParameters['browserName'] = 'Chrome' # Otherwise use browser
+        sauceParameters['browserName'] = 'Chrome' # Otherwise use Chrome
+        #Note! Replace 'Chrome' with 'Browser' for older versions of Android to use the stock browser
 elif iosTest:
     sauceParameters.update(iosParameters)
     if useApp:
