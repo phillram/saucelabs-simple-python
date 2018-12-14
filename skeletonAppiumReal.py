@@ -18,7 +18,7 @@ iosTest = False
 # Uncomment one of those lines
 ###################################################################
 
-androidTest = True
+# androidTest = True
 # iosTest = True
 
 
