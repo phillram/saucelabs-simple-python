@@ -127,3 +127,12 @@ def getNumber(filename = countFilePath):
 ###################################################################
 driver.quit()
 
+
+###################################################################
+# Selenium with Python doesn't like using HTTPS correctly
+# and displays a warning that it uses Unverified HTTPS request
+# The following disables that warning to clear the clutter
+# But I should find a way to do the proper requests
+###################################################################
+import urllib3
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
