@@ -1,5 +1,5 @@
 ####################################################################
-# Skeleton for Appium RDC tests on Test Object
+# Skeleton for Appium tests on Sauce Labs RDC
 ####################################################################
 
 

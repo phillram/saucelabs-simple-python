@@ -1,5 +1,5 @@
 ####################################################################
-# Minimal script to connect to Test Object
+# Minimal script to connect to Sauce Labs RDC
 # All this does is connect to your project and start a test
 # wait 30 seconds. Then quit test
 ####################################################################
