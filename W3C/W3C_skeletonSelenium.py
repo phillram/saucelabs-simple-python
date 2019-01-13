@@ -36,7 +36,7 @@ sauceParameters = {
     'browserVersion': 'latest',
 
     'sauce:options':{
-        'tags':['Case', 'zoo',],
+        'tags':['Case', 'NUM',],
         'name': 'Run: ' + getNumber(),
         # 'tunnelIdentifier':'Phill Tunnel One',
         # 'screenResolution':'1920x1080',
@@ -57,14 +57,14 @@ sauceParameters = {
     },
     'goog:chromeOptions':{
         'w3c': True,
-        'mobileEmulation':{'deviceName':'iPhone X'},
-    #     'prefs': {
-    #         'profile': {
-    #             'password_manager_enabled': False
-    #             },
-    #             'credentials_enable_service': False,
-    #         },
-    #         'args': ['test-type', 'disable-infobars'],
+        # 'mobileEmulation':{'deviceName':'iPhone X'},
+        # 'prefs': {
+        #     'profile': {
+        #         'password_manager_enabled': False
+        #         },
+        #         'credentials_enable_service': False,
+        #     },
+        #     'args': ['test-type', 'disable-infobars'],
     },
 }
 
@@ -78,6 +78,10 @@ sauceParameters['sauce:options'].update({'build': '-'.join(sauceParameters['sauc
 driver = webdriver.Remote(
     command_executor='https://'+os.environ['SAUCE_USERNAME']+':'+os.environ['SAUCE_ACCESS_KEY']+'@ondemand.saucelabs.com:443/wd/hub',
     desired_capabilities=sauceParameters)
+
+    
+# driver = webdriver.Remote(
+#     command_executor="https://%s:%s@ondemand.saucelabs.com/wd/hub" % (username, access_key), desired_capabilities=desired_caps)
 
 ###################################################################
 # Test logic goes here
