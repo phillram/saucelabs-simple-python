@@ -67,7 +67,7 @@ def run_sauce_test():
         #             },
         #             'credentials_enable_service': False,
         #         },
-        #         'args': ['test-type', 'disable-infobars'],
+        #     'args': ['test-type', 'disable-infobars'],
         # },
     }
 
