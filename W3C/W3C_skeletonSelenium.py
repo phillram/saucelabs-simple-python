@@ -30,11 +30,11 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 # For Sauce Labs Tests
 ###################################################################
 sauceParameters = {
-
+    # Required platform information
     'platformName': 'Windows 10',
     'browserName': 'chrome',
     'browserVersion': 'latest',
-
+    # Options used by Sauce Labs
     'sauce:options':{
         'tags':['Case', 'NUM',],
         'name': 'Run: ' + getNumber(),
@@ -55,8 +55,9 @@ sauceParameters = {
         #     'background': 'true',
         # },
     },
+    # Options used by Chrome
     'goog:chromeOptions':{
-        'w3c': True,
+        'w3c': True,    #Required for a W3C Chrome test
         # 'mobileEmulation':{'deviceName':'iPhone X'},
         # 'prefs': {
         #     'profile': {
@@ -64,7 +65,7 @@ sauceParameters = {
         #         },
         #         'credentials_enable_service': False,
         #     },
-        #     'args': ['test-type', 'disable-infobars'],
+        # 'args': ['test-type', 'disable-infobars'],
     },
 }
 
