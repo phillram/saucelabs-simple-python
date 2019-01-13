@@ -32,15 +32,16 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 sauceParameters = {
     # Required platform information
     'platformName': 'Windows 10',
-    'browserName': 'chrome',
+    'browserName': 'Chrome',
     'browserVersion': 'latest',
+
     # Options used by Sauce Labs
     'sauce:options':{
         'tags':['Case', 'NUM',],
         'name': 'Run: ' + getNumber(),
         # 'tunnelIdentifier':'Phill Tunnel One',
         # 'screenResolution':'1920x1080',
-        # 'seleniumVersion': '3.8.1',
+        # 'seleniumVersion': '3.141.59',
         # 'iedriverVersion': '3.4.0',
         # 'chromedriverVersion': '2.40',
         # 'requireWindowFocus' : True,
@@ -55,9 +56,10 @@ sauceParameters = {
         #     'background': 'true',
         # },
     },
+    
     # Options used by Chrome
     'goog:chromeOptions':{
-        'w3c': True,    #Required for a W3C Chrome test
+        'w3c': True,    # Required for a W3C Chrome test
         # 'mobileEmulation':{'deviceName':'iPhone X'},
         # 'prefs': {
         #     'profile': {
@@ -67,6 +69,9 @@ sauceParameters = {
         #     },
         # 'args': ['test-type', 'disable-infobars'],
     },
+    # 'moz:firefoxOptions':{
+    #     "log": {"level": "trace"},
+    # },
 }
 
 
@@ -79,10 +84,6 @@ sauceParameters['sauce:options'].update({'build': '-'.join(sauceParameters['sauc
 driver = webdriver.Remote(
     command_executor='https://'+os.environ['SAUCE_USERNAME']+':'+os.environ['SAUCE_ACCESS_KEY']+'@ondemand.saucelabs.com:443/wd/hub',
     desired_capabilities=sauceParameters)
-
-    
-# driver = webdriver.Remote(
-#     command_executor="https://%s:%s@ondemand.saucelabs.com/wd/hub" % (username, access_key), desired_capabilities=desired_caps)
 
 ###################################################################
 # Test logic goes here

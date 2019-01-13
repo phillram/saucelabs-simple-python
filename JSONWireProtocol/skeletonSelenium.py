@@ -61,6 +61,9 @@ sauceParameters = {
     #         },
     #     'args': ['test-type', 'disable-infobars'],
     # },
+    # 'moz:firefoxOptions':{
+    #     "log": {"level": "trace"},
+    # },
 }
 
 # This concatenates the tags key above to add the build parameter
