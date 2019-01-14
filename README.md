@@ -2,7 +2,7 @@
 Very simple tests for Sauce Labs that don't require huge frameworks.
 
 # W3C
-The minimum Selenium version that supports W3C is 3.8.0. If your test is erroring with incompatible browsers or infrastructure errors, then make sure you specify the 'seleniumVersion' parameter.
+The minimum Selenium version that supports W3C is 3.8.0. If your test is erroring with incompatible browsers or infrastructure errors, then make sure you specify the `seleniumVersion` parameter.
 Additionally, you'll need Safari 11+, Firefox 53+, or Chrome 61+.
 
 # Appium usage
