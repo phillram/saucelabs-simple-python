@@ -41,41 +41,53 @@ def run_sauce_test():
     # For Sauce Labs Tests
     ###################################################################    
     sauceParameters = {
-        'tags':['Case', 'NUM',],
-        'platform': 'Windows 10',
-        'browserName': 'chrome',
-        'version': 'latest',
-        'screenResolution':'1920x1080',
-        'name': 'Run: ' + getNumber(),
-        # 'seleniumVersion': '3.8.1',
-        # 'iedriverVersion': '3.4.0',
-        # 'maxDuration': 1800,
-        # 'idleTimeout': 1000,
-        # 'commandTimeout': 600,
-        # 'videoUploadOnPass':False,
-        # 'extendedDebugging':'true',
-        # 'prerun':{ 
-        #     'executable': 'https://gist.githubusercontent.com/phillram/92a0f22db47892e4b27d04066084ce92/raw/aaeee222780e4ad8647667b267d81684d6059b5c/set_agent.sh',
-        #     'args': '',
-        #     'background': 'true',
-        # },
-        # 'chromeOptions':{
-        #     mobileEmulation':{'deviceName':'iPhone X'},
-        #     'prefs': {
-        #         'profile': {
-        #             'password_manager_enabled': False
-        #             },
-        #             'credentials_enable_service': False,
-        #         },
-        #     'args': ['test-type', 'disable-infobars'],
-        # },
+        # Required platform information
+        'platformName': 'Windows 10',
+        'browserName': 'Chrome',
+        'browserVersion': 'latest',
+
+        # Options used by Sauce Labs
+        'sauce:options':{
+            'tags':['Case', 'NUM',],
+            'name': 'Run: ' + getNumber(),
+            # 'tunnelIdentifier':'Phill Tunnel One',
+            # 'screenResolution':'1920x1080',
+            # 'seleniumVersion': '3.141.59',
+            # 'iedriverVersion': '3.4.0',
+            # 'chromedriverVersion': '2.40',
+            # 'requireWindowFocus' : True,
+            # 'maxDuration': 1800,
+            # 'idleTimeout': 1000,
+            # 'commandTimeout': 600,
+            # 'videoUploadOnPass':False,
+            # 'extendedDebugging':'true',
+            # 'prerun':{ 
+            #     'executable': 'https://gist.githubusercontent.com/phillram/92a0f22db47892e4b27d04066084ce92/raw/aaeee222780e4ad8647667b267d81684d6059b5c/set_agent.sh',
+            #     'args': '',
+            #     'background': 'true',
+            # },
+        },
+        
+        # Options used by Chrome
+        'goog:chromeOptions':{
+            'w3c': True,    # Required for a W3C Chrome test
+            # 'mobileEmulation':{'deviceName':'iPhone X'},
+            # 'prefs': {
+            #     'profile': {
+            #         'password_manager_enabled': False
+            #         },
+            #         'credentials_enable_service': False,
+            #     },
+            # 'args': ['test-type', 'disable-infobars'],
+        },
         # 'moz:firefoxOptions':{
         #     "log": {"level": "trace"},
         # },
     }
 
+
     # This concatenates the tags key above to add the build parameter
-    sauceParameters.update({'build': '-'.join(sauceParameters.get('tags'))})
+    sauceParameters['sauce:options'].update({'build': '-'.join(sauceParameters['sauce:options'].get('tags'))})
     
     ###################################################################
     # Connect to Sauce Labs
