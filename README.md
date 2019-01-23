@@ -1,4 +1,4 @@
-# saucelabs-simple-python
+# Simple Sauce Lab Examples
 Very simple tests for Sauce Labs that don't require huge frameworks.
 
 # W3C
