@@ -55,9 +55,10 @@ def run_sauce_test():
         # 'videoUploadOnPass':False,
         # 'extendedDebugging':'true',
         # 'prerun':{ 
-        #     'executable': 'https://gist.githubusercontent.com/phillram/92a0f22db47892e4b27d04066084ce92/raw/aaeee222780e4ad8647667b267d81684d6059b5c/set_agent.sh',
-        #     'args': '',
-        #     'background': 'true',
+        #     'executable': 'https://raw.githubusercontent.com/phillsauce/saucelabs-import-files/master/WinDownloadFiles.bat',
+        #     'args': ['--silent'],
+        #     'timeout': 500,
+        #     'background': 'false',
         # },
         # 'chromeOptions':{
         #     mobileEmulation':{'deviceName':'iPhone X'},
