@@ -10,6 +10,7 @@ from appium import webdriver
 from time import sleep
 import sys
 from reusableFxns import *
+import requests
 androidTest = False
 iosTest = False
 
@@ -26,10 +27,8 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 # Choose if you want Android of iOS capabilities
 # Uncomment one of those lines
 ###################################################################
-
 # androidTest = True
 # iosTest = True
-
 
 ###################################################################
 # Common parameters (desired capabilities)
@@ -80,7 +79,7 @@ elif iosTest:
 ###################################################################
 driver = webdriver.Remote(
     command_executor='https://us1.appium.testobject.com/wd/hub',
-    #command_executor='https://eu1.appium.testobject.com/wd/hub',
+    # command_executor='https://eu1.appium.testobject.com/wd/hub',
     desired_capabilities=sauceParameters)
 
 ###################################################################
@@ -115,6 +114,14 @@ interact.click()
 #__________________________________________________________________
 # driver.execute_script('sauce: break')
 # driver.execute_script('sauce:context=Place words here for notes')
+
+# Updating the test to pass/fail via the API
+#__________________________________________________________________
+requests.put(
+    'https://app.testobject.com/api/rest/v2/appium/session/' + driver.session_id + '/test/',
+    headers = { 'Content-Type': 'application/json',},  
+    data = '{"passed": true}' # Update this to pass either True or False depending on your requirements
+)
 
 # Ending the test session
 #__________________________________________________________________
