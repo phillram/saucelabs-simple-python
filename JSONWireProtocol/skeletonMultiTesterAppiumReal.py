@@ -11,6 +11,7 @@ from time import sleep
 import multiprocessing
 import sys
 from reusableFxns import *
+import requests
 androidTest = False
 iosTest = False
 
@@ -93,7 +94,7 @@ def run_sauce_test():
     ###################################################################
     driver = webdriver.Remote(
         command_executor='https://us1.appium.testobject.com/wd/hub',
-        #command_executor='https://eu1.appium.testobject.com/wd/hub',
+        # command_executor='https://eu1.appium.testobject.com/wd/hub',
         desired_capabilities=sauceParameters)
     
     ###################################################################
@@ -128,6 +129,14 @@ def run_sauce_test():
     #__________________________________________________________________
     # driver.execute_script('sauce: break')
     # driver.execute_script('sauce:context=Place words here for notes')
+
+    # Updating the test to pass/fail via the API
+    #__________________________________________________________________
+    requests.put(
+        'https://app.testobject.com/api/rest/v2/appium/session/' + driver.session_id + '/test/',
+        headers = { 'Content-Type': 'application/json',},  
+        data = '{"passed": true}' # Update this to pass either True or False depending on your requirements
+    )
 
     # Ending the test session
     #__________________________________________________________________
