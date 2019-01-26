@@ -3,6 +3,7 @@ Very simple tests for Sauce Labs that don't require huge frameworks.
 
 # Installing requirements
 You may not need all the packages in the requirements file, but you can install them to your python like so:
+
 `pip install -r /path/to/requirements.txt`
 
 # W3C
