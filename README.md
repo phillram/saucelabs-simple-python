@@ -1,6 +1,10 @@
 # Simple Sauce Lab Examples
 Very simple tests for Sauce Labs that don't require huge frameworks.
 
+# Installing requirements
+You may not need all the packages in the requirements file, but you can install them to your python like so:
+`pip install -r /path/to/requirements.txt`
+
 # W3C
 The minimum Selenium version that supports W3C is 3.8.0. If your test is erroring with incompatible browsers or infrastructure errors, then make sure you specify the `seleniumVersion` parameter.
 Additionally, you'll need Safari 11+, Firefox 53+, or Chrome 61+.
