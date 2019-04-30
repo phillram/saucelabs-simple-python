@@ -23,3 +23,13 @@ def getNumber(filename = countFilePath):
                 countingFile.close()
                 # print ('This is test run: ' + str(val))
                 return str(val)
+
+
+###################################################################
+# This is a list of the data center URLs.
+# Mainly for reference, but you're welcome to use the variables
+###################################################################
+
+us_west_dc = 'ondemand.saucelabs.com/wd/hub'
+us_east_dc = 'ondemand.eu-central-1.saucelabs.com/wd/hub'
+eu_west_dc = 'ondemand.us-east-1.saucelabs.com/wd/hub'

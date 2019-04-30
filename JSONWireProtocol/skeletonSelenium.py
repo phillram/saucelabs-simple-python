@@ -32,9 +32,9 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 sauceParameters = {
     'tags':['Case', 'NUM',],
     'platform': 'Windows 10',
-    'browserName': 'chrome',
+    'browserName': 'internet explorer',
     'version': 'latest',
-    'screenResolution':'1920x1080',
+    # 'screenResolution':'1920x1080',
     'name': 'Run: ' + getNumber(),
     # 'tunnelIdentifier':'Phill Tunnel One',
     # 'seleniumVersion': '3.8.1',

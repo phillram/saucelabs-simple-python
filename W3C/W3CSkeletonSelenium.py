@@ -32,16 +32,17 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 sauceParameters = {
     # Required platform information
     'platformName': 'Windows 10',
-    'browserName': 'Chrome',
+    'browserName': 'firefox',
     'browserVersion': 'latest',
 
     # Options used by Sauce Labs
     'sauce:options':{
         'tags':['Case', 'NUM',],
         'name': 'Run: ' + getNumber(),
+        # "webdriver.remote.quietExceptions": 'true',
         # 'tunnelIdentifier':'Phill Tunnel One',
         # 'screenResolution':'1920x1080',
-        # 'seleniumVersion': '3.141.59',
+        'seleniumVersion': '3.141.59',
         # 'iedriverVersion': '3.4.0',
         # 'chromedriverVersion': '2.40',
         # 'requireWindowFocus' : True,
@@ -70,9 +71,9 @@ sauceParameters = {
         #     },
         # 'args': ['test-type', 'disable-infobars'],
     },
-    # 'moz:firefoxOptions':{
-    #     "log": {"level": "trace"},
-    # },
+    'moz:firefoxOptions':{
+        "log": {"level": "trace"},
+    },
 }
 
 
