@@ -34,6 +34,7 @@ androidTest = True
 ###################################################################
 # Select Data Center
 # Set region to 'US' or 'EU'
+# Test will default to 'US' if left blank or set to any other than 'US' or 'EU'
 ###################################################################
 
 region = 'US'
@@ -109,7 +110,12 @@ elif iosTest:
 ###################################################################
 # Connect to Sauce Labs
 ###################################################################
-if region == 'US':
+try:
+    region
+except NameError:
+    region = 'US'
+
+if region != 'EU':
     print("You are using the US data center")
     driver = webdriver.Remote(
         command_executor='https://'+os.environ['SAUCE_USERNAME']+':'+os.environ['SAUCE_ACCESS_KEY']+'@ondemand.saucelabs.com:443/wd/hub',

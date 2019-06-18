@@ -14,7 +14,7 @@ import os
 import time
 from datetime import datetime
 from time import sleep
-from reusableFxns import *
+# from reusableFxns import *
 
 ###################################################################
 # Selenium with Python doesn't like using HTTPS correctly
@@ -28,9 +28,10 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 ###################################################################
 # Select Data Center
 # Set region to 'US' or 'EU'
+# Test will default to 'US' if left blank or set to any other than 'US' or 'EU'
 ###################################################################
 
-region = 'EU'
+region = 'US'
 
 ###################################################################
 # Common parameters (desired capabilities)
@@ -45,9 +46,9 @@ sauceParameters = {
     # Options used by Sauce Labs
     'sauce:options':{
         'tags':['Case', 'NUM',],
-        'name': 'Run: ' + getNumber(),
+        # 'name': 'Run: ' + getNumber(),
         'extendedDebugging': 'true',
-        'capturePerformance': 'true'
+        'capturePerformance': 'true',
         # "webdriver.remote.quietExceptions": 'true',
         # 'tunnelIdentifier':'Phill Tunnel One',
         # 'screenResolution':'1920x1080',
@@ -92,7 +93,12 @@ sauceParameters['sauce:options'].update({'build': '-'.join(sauceParameters['sauc
 ###################################################################
 # Connect to Sauce Labs
 ###################################################################
-if region == 'US':
+try:
+    region
+except NameError:
+    region = 'US'
+
+if region != 'EU':
     print("You are using the US data center")
     driver = webdriver.Remote(
         command_executor='https://'+os.environ['SAUCE_USERNAME']+':'+os.environ['SAUCE_ACCESS_KEY']+'@ondemand.saucelabs.com:443/wd/hub',
