@@ -10,7 +10,7 @@ from time import sleep
 import sys
 import os
 androidTest = False
-from reusableFxns import *
+# from reusableFxns import *
 iosTest = False
 useApp = False
 
@@ -28,8 +28,15 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 # Uncomment one of those lines
 ###################################################################
 
-# androidTest = True
+androidTest = True
 # iosTest = True
+
+###################################################################
+# Select Data Center
+# Set region to 'US' or 'EU'
+###################################################################
+
+region = 'US'
 
 ###################################################################
 # Uncomment if this is an app test
@@ -46,10 +53,12 @@ appLocation = 'sauce-storage:app.apk'
 projectParameters = {
     'tags':['Case', '1111',],
     'appiumVersion': '1.8.1',
-    'name': 'Run: ' + getNumber(),
+    # 'name': 'Run: ' + getNumber(),
     # 'autoAcceptAlerts':'true',
     # 'locationServicesEnabled':'true',
     # 'locationServicesAuthorized':'true',
+    'extendedDebugging': 'true',
+    'capturePerformance': 'true'
 }
 
 androidParameters = { # Define Android parameters here
@@ -77,12 +86,12 @@ sauceParameters.update(projectParameters)
 sauceParameters.update({'build': '-'.join(projectParameters.get('tags'))}) # This concatenates the tags key above to add the build parameter
 
 
-if androidTest != True and iosTest != True: 
+if androidTest != True and iosTest != True:
     print('You need to specify a platform to test on!')
-    sys.exit()    
-elif androidTest == True and iosTest == True: 
+    sys.exit()
+elif androidTest == True and iosTest == True:
     print('Don\'t be greedy! Only choose one platform!')
-    sys.exit()    
+    sys.exit()
 elif androidTest:
     sauceParameters.update(androidParameters)
     if useApp:
@@ -100,9 +109,16 @@ elif iosTest:
 ###################################################################
 # Connect to Sauce Labs
 ###################################################################
-driver = webdriver.Remote(
-    command_executor='https://'+os.environ['SAUCE_USERNAME']+':'+os.environ['SAUCE_ACCESS_KEY']+'@ondemand.saucelabs.com:443/wd/hub',
-    desired_capabilities=sauceParameters)
+if region == 'US':
+    print("You are using the US data center")
+    driver = webdriver.Remote(
+        command_executor='https://'+os.environ['SAUCE_USERNAME']+':'+os.environ['SAUCE_ACCESS_KEY']+'@ondemand.saucelabs.com:443/wd/hub',
+        desired_capabilities=sauceParameters)
+elif region == 'EU':
+    print ("You are using the EU data center")
+    driver = webdriver.Remote(
+        command_executor='https://'+os.environ['SAUCE_USERNAME']+':'+os.environ['SAUCE_ACCESS_KEY']+'@ondemand.eu-central-1.saucelabs.com:443/wd/hub',
+        desired_capabilities=sauceParameters)
 
 ###################################################################
 # Test logic goes here
@@ -140,9 +156,3 @@ interact.click()
 # Ending the test session
 #__________________________________________________________________
 driver.quit()
-
-
-
-
-
-

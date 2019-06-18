@@ -42,6 +42,8 @@ sauceParameters = {
     'platform': 'Windows 10',
     'browserName': 'internet explorer',
     'version': 'latest',
+    'extendedDebugging': 'true',
+    'capturePerformance': 'true'
     # 'screenResolution':'1920x1080',
     # 'name': 'Run: ' + getNumber(),
     # 'tunnelIdentifier':'Phill Tunnel One',
@@ -91,6 +93,7 @@ elif region == 'EU':
     driver = webdriver.Remote(
         command_executor='https://'+os.environ['SAUCE_USERNAME']+':'+os.environ['SAUCE_ACCESS_KEY']+'@ondemand.eu-central-1.saucelabs.com:443/wd/hub',
         desired_capabilities=sauceParameters)
+
 ###################################################################
 # Test logic goes here
 ###################################################################

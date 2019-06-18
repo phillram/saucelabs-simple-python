@@ -30,6 +30,7 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 # androidTest = True
 # iosTest = True
 
+
 ###################################################################
 # Common parameters (desired capabilities)
 # For Test Object tests
@@ -63,10 +64,10 @@ iosParameters = { # Define iOS Parameters here
 
 sauceParameters = {}
 sauceParameters.update(projectParameters)
-if androidTest != True and iosTest != True: 
+if androidTest != True and iosTest != True:
     print('You need to specify a platform to test on!')
-    sys.exit()    
-elif androidTest == True and iosTest == True: 
+    sys.exit()
+elif androidTest == True and iosTest == True:
     print('Don\'t be greedy! Only choose one platform!')
     sys.exit()
 elif androidTest:
@@ -119,12 +120,10 @@ interact.click()
 #__________________________________________________________________
 requests.put(
     'https://app.testobject.com/api/rest/v2/appium/session/' + driver.session_id + '/test/',
-    headers = { 'Content-Type': 'application/json',},  
+    headers = { 'Content-Type': 'application/json',},
     data = '{"passed": true}' # Update this to pass either True or False depending on your requirements
 )
 
 # Ending the test session
 #__________________________________________________________________
 driver.quit()
-
-
