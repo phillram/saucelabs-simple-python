@@ -14,7 +14,7 @@ import time
 from datetime import datetime
 from time import sleep
 import multiprocessing
-from reusableFxns import *
+# from reusableFxns import *
 
 ###################################################################
 # Selenium with Python doesn't like using HTTPS correctly
@@ -24,6 +24,14 @@ from reusableFxns import *
 ###################################################################
 import urllib3
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+
+###################################################################
+# Select Data Center
+# Set region to 'US' or 'EU'
+# Test will default to 'US' if left blank or set to any other than 'US' or 'EU'
+###################################################################
+
+region = 'US'
 
 ###################################################################
 # This makes the functions below execute 'run' amount of times
@@ -39,14 +47,16 @@ def run_sauce_test():
     ###################################################################
     # Common parameters (desired capabilities)
     # For Sauce Labs Tests
-    ###################################################################    
+    ###################################################################
     sauceParameters = {
         'tags':['Case', 'NUM',],
         'platform': 'Windows 10',
         'browserName': 'chrome',
         'version': 'latest',
         'screenResolution':'1920x1080',
-        'name': 'Run: ' + getNumber(),
+        'extendedDebugging': 'true',
+        'capturePerformance': 'true'
+        # 'name': 'Run: ' + getNumber(),
         # 'seleniumVersion': '3.8.1',
         # 'iedriverVersion': '3.4.0',
         # 'maxDuration': 1800,
@@ -54,7 +64,7 @@ def run_sauce_test():
         # 'commandTimeout': 600,
         # 'videoUploadOnPass':False,
         # 'extendedDebugging':'true',
-        # 'prerun':{ 
+        # 'prerun':{
         #     'executable': 'https://raw.githubusercontent.com/phillsauce/saucelabs-import-files/master/WinDownloadFiles.bat',
         #     'args': ['--silent'],
         #     'timeout': 500,
@@ -77,14 +87,26 @@ def run_sauce_test():
 
     # This concatenates the tags key above to add the build parameter
     sauceParameters.update({'build': '-'.join(sauceParameters.get('tags'))})
-    
+
     ###################################################################
     # Connect to Sauce Labs
     ###################################################################
-    driver = webdriver.Remote(
-        command_executor='https://'+os.environ['SAUCE_USERNAME']+':'+os.environ['SAUCE_ACCESS_KEY']+'@ondemand.saucelabs.com:443/wd/hub',
-        desired_capabilities=sauceParameters)
-    
+    try:
+        region
+    except NameError:
+        region = 'US'
+
+    if region != 'EU':
+        print("You are using the US data center")
+        driver = webdriver.Remote(
+            command_executor='https://'+os.environ['SAUCE_USERNAME']+':'+os.environ['SAUCE_ACCESS_KEY']+'@ondemand.saucelabs.com:443/wd/hub',
+            desired_capabilities=sauceParameters)
+    elif region == 'EU':
+        print ("You are using the EU data center")
+        driver = webdriver.Remote(
+            command_executor='https://'+os.environ['SAUCE_USERNAME']+':'+os.environ['SAUCE_ACCESS_KEY']+'@ondemand.eu-central-1.saucelabs.com:443/wd/hub',
+            desired_capabilities=sauceParameters)
+
     ###################################################################
     # Test logic goes here
     ###################################################################
@@ -137,4 +159,3 @@ if __name__ == '__main__':
         jobs.append(jobRun) # Add to the array.
         jobRun.start() # Start the functions.
         # print('this is the run for: '+ str(i))
-

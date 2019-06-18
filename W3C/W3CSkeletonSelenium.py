@@ -14,7 +14,7 @@ import os
 import time
 from datetime import datetime
 from time import sleep
-from reusableFxns import *
+# from reusableFxns import *
 
 ###################################################################
 # Selenium with Python doesn't like using HTTPS correctly
@@ -24,6 +24,14 @@ from reusableFxns import *
 ###################################################################
 import urllib3
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+
+###################################################################
+# Select Data Center
+# Set region to 'US' or 'EU'
+# Test will default to 'US' if left blank or set to any other than 'US' or 'EU'
+###################################################################
+
+region = 'US'
 
 ###################################################################
 # Common parameters (desired capabilities)
@@ -38,7 +46,9 @@ sauceParameters = {
     # Options used by Sauce Labs
     'sauce:options':{
         'tags':['Case', 'NUM',],
-        'name': 'Run: ' + getNumber(),
+        # 'name': 'Run: ' + getNumber(),
+        'extendedDebugging': 'true',
+        'capturePerformance': 'true',
         # "webdriver.remote.quietExceptions": 'true',
         # 'tunnelIdentifier':'Phill Tunnel One',
         # 'screenResolution':'1920x1080',
@@ -51,14 +61,14 @@ sauceParameters = {
         # 'commandTimeout': 600,
         # 'videoUploadOnPass':False,
         # 'extendedDebugging':'true',
-        # 'prerun':{ 
+        # 'prerun':{
         #     'executable': 'https://raw.githubusercontent.com/phillsauce/saucelabs-import-files/master/WinDownloadFiles.bat',
         #     'args': ['--silent'],
         #     'timeout': 500,
         #     'background': 'false',
         # },
     },
-    
+
     # Options used by Chrome
     'goog:chromeOptions':{
         'w3c': True,    # Required for a W3C Chrome test
@@ -83,9 +93,21 @@ sauceParameters['sauce:options'].update({'build': '-'.join(sauceParameters['sauc
 ###################################################################
 # Connect to Sauce Labs
 ###################################################################
-driver = webdriver.Remote(
-    command_executor='https://'+os.environ['SAUCE_USERNAME']+':'+os.environ['SAUCE_ACCESS_KEY']+'@ondemand.saucelabs.com:443/wd/hub',
-    desired_capabilities=sauceParameters)
+try:
+    region
+except NameError:
+    region = 'US'
+
+if region != 'EU':
+    print("You are using the US data center")
+    driver = webdriver.Remote(
+        command_executor='https://'+os.environ['SAUCE_USERNAME']+':'+os.environ['SAUCE_ACCESS_KEY']+'@ondemand.saucelabs.com:443/wd/hub',
+        desired_capabilities=sauceParameters)
+elif region == 'EU':
+    print ("You are using the EU data center")
+    driver = webdriver.Remote(
+        command_executor='https://'+os.environ['SAUCE_USERNAME']+':'+os.environ['SAUCE_ACCESS_KEY']+'@ondemand.eu-central-1.saucelabs.com:443/wd/hub',
+        desired_capabilities=sauceParameters)
 
 ###################################################################
 # Test logic goes here
@@ -123,4 +145,3 @@ interact.click()
 # Ending the test session
 #__________________________________________________________________
 driver.quit()
-

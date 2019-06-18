@@ -32,6 +32,14 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 run = 2
 
 ###################################################################
+# Select Data Center
+# Set region to 'US' or 'EU'
+# Test will default to 'US' if left blank or set to any other than 'US' or 'EU'
+###################################################################
+
+region = 'US'
+
+###################################################################
 # Declare as a function in order to do multiple runs
 ###################################################################
 
@@ -39,7 +47,7 @@ def run_sauce_test():
     ###################################################################
     # Common parameters (desired capabilities)
     # For Sauce Labs Tests
-    ###################################################################    
+    ###################################################################
     sauceParameters = {
         # Required platform information
         'platformName': 'Windows 10',
@@ -50,6 +58,8 @@ def run_sauce_test():
         'sauce:options':{
             'tags':['Case', 'NUM',],
             'name': 'Run: ' + getNumber(),
+            # 'extendedDebugging': 'true',
+            # 'capturePerformance': 'true'
             # 'tunnelIdentifier':'Phill Tunnel One',
             # 'screenResolution':'1920x1080',
             # 'seleniumVersion': '3.141.59',
@@ -61,14 +71,14 @@ def run_sauce_test():
             # 'commandTimeout': 600,
             # 'videoUploadOnPass':False,
             # 'extendedDebugging':'true',
-            # 'prerun':{ 
+            # 'prerun':{
             #     'executable': 'https://raw.githubusercontent.com/phillsauce/saucelabs-import-files/master/WinDownloadFiles.bat',
             #     'args': ['--silent'],
             #     'timeout': 500,
             #     'background': 'false',
             # },
         },
-        
+
         # Options used by Chrome
         'goog:chromeOptions':{
             'w3c': True,    # Required for a W3C Chrome test
@@ -89,14 +99,26 @@ def run_sauce_test():
 
     # This concatenates the tags key above to add the build parameter
     sauceParameters['sauce:options'].update({'build': '-'.join(sauceParameters['sauce:options'].get('tags'))})
-    
+
     ###################################################################
     # Connect to Sauce Labs
     ###################################################################
-    driver = webdriver.Remote(
-        command_executor='https://'+os.environ['SAUCE_USERNAME']+':'+os.environ['SAUCE_ACCESS_KEY']+'@ondemand.saucelabs.com:443/wd/hub',
-        desired_capabilities=sauceParameters)
-    
+    try:
+        region
+    except NameError:
+        region = 'US'
+
+    if region != 'EU':
+        print("You are using the US data center")
+        driver = webdriver.Remote(
+            command_executor='https://'+os.environ['SAUCE_USERNAME']+':'+os.environ['SAUCE_ACCESS_KEY']+'@ondemand.saucelabs.com:443/wd/hub',
+            desired_capabilities=sauceParameters)
+    elif region == 'EU':
+        print ("You are using the EU data center")
+        driver = webdriver.Remote(
+            command_executor='https://'+os.environ['SAUCE_USERNAME']+':'+os.environ['SAUCE_ACCESS_KEY']+'@ondemand.eu-central-1.saucelabs.com:443/wd/hub',
+            desired_capabilities=sauceParameters)
+
     ###################################################################
     # Test logic goes here
     ###################################################################
@@ -149,4 +171,3 @@ if __name__ == '__main__':
         jobs.append(jobRun) # Add to the array.
         jobRun.start() # Start the functions.
         # print('this is the run for: '+ str(i))
-
