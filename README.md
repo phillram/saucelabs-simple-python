@@ -19,4 +19,6 @@ These don't require an Appium server installed. There are two ways to use Appium
 * Install the [Appium-Python-Client](https://pypi.org/project/Appium-Python-Client/) and not have to worry about it.
   *  Installation can be done with in your execution directory with:
   
-  ```pip install Appium-Python-Client```
+  ```
+  pip install Appium-Python-Client
+  ```
