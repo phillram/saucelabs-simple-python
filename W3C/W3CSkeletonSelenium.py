@@ -84,6 +84,14 @@ sauceParameters = {
     'moz:firefoxOptions':{
         "log": {"level": "trace"},
     },
+    # 'se:ieOptions': {
+        # 'browserCommandLineSwitches': '-k',
+        # 'nativeEvents': 'false',
+        # 'requireWindowFocus': 'true',
+        # 'initialBrowserUrl': 'about:blank',
+        # 'enablePersistentHover': 'true',
+        # 'forceCreateProcessApi': 'true',
+    # },    
 }
 
 
