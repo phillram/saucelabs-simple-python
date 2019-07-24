@@ -69,9 +69,9 @@ sauceParameters = {
         # },
     },
 
-    # Options used by Chrome
-    'goog:chromeOptions':{
-        'w3c': True,    # Required for a W3C Chrome test
+    # W3C Options used by Chrome
+    # 'goog:chromeOptions':{
+        # 'w3c': True,    # Required for a W3C Chrome test
         # 'mobileEmulation':{'deviceName':'iPhone X'},
         # 'prefs': {
         #     'profile': {
@@ -80,10 +80,14 @@ sauceParameters = {
         #         'credentials_enable_service': False,
         #     },
         # 'args': ['test-type', 'disable-infobars'],
-    },
-    'moz:firefoxOptions':{
-        "log": {"level": "trace"},
-    },
+    # },
+
+    # W3C Options used by Firefox
+    # 'moz:firefoxOptions':{
+        # "log": {"level": "trace"},
+    # },
+    
+    # W3C Options used by Internet Explorer
     # 'se:ieOptions': {
         # 'browserCommandLineSwitches': '-k',
         # 'nativeEvents': 'false',
@@ -91,7 +95,8 @@ sauceParameters = {
         # 'initialBrowserUrl': 'about:blank',
         # 'enablePersistentHover': 'true',
         # 'forceCreateProcessApi': 'true',
-    # },    
+        # 'avoidProxy':'true',
+    # },
 }
 
 
