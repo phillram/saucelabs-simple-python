@@ -37,31 +37,30 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 ###################################################################
 projectParameters = {
     'testobject_api_key' : 'APIKEY', # The API generated for the Test Object project
-    'appiumVersion': '1.8.1',
     'name': 'Run: ' + getNumber(),
+    # The following are not required
+    # 'deviceOrientation' : 'portrait',
+    # 'appiumVersion': '1.16.0',
 }
 
 androidParameters = { # Define Android parameters here
-    'deviceName' : 'Google Pixel',
-    'platformVersion' : '9',
-    'browserName' : 'Chrome',
-    'deviceOrientation' : 'portrait',
+    'deviceName' : '.*Pixel.*',
     'platformName' : 'Android',
+    'browserName' : 'Chrome',
+    'platformVersion' : '10',
 }
 
 iosParameters = { # Define iOS Parameters here
-    'deviceName' : 'iPhone X',
-    'deviceOrientation' : 'portrait',
-    'browserName' : 'safari',
-    'platformVersion' : '12',
+    'deviceName' : 'iPhone.*',
+    'platformVersion' : '13',
     'platformName' : 'iOS',
-    # 'nativeWebTap': True, # iOS only capability.
+    'browserName' : 'safari',
+    # 'nativeWebTap': 'true',
 }
 
 ###################################################################
 # Merge parameters into a single capability dictionary
 ###################################################################
-
 sauceParameters = {}
 sauceParameters.update(projectParameters)
 if androidTest != True and iosTest != True:

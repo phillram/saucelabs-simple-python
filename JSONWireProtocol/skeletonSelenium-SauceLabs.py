@@ -14,7 +14,7 @@ import os
 import time
 from datetime import datetime
 from time import sleep
-# from reusableFxns import *
+from reusableFxns import *
 
 ###################################################################
 # Selenium with Python doesn't like using HTTPS correctly
@@ -30,54 +30,50 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 # Set region to 'US' or 'EU'
 # Test will default to 'US' if left blank or set to any other than 'US' or 'EU'
 ###################################################################
-
 region = 'US'
 
 ###################################################################
 # Common parameters (desired capabilities)
 # For Sauce Labs Tests
 ###################################################################
-
 sauceParameters = {
     'tags':['Case', 'NUM',],
+    'name': 'Run: ' + getNumber(),
     'platform': 'Windows 10',
-    'browserName': 'internet explorer',
-    'version': 'latest',
-    'extendedDebugging': 'true',
-    'capturePerformance': 'true'
+    'browserName': 'chrome',
+    # The following are not required
+    # 'version': 'latest',
     # 'screenResolution':'1920x1080',
-    # 'name': 'Run: ' + getNumber(),
-    # 'tunnelIdentifier':'Phill Tunnel One',
-    # 'seleniumVersion': '3.8.1',
-    # 'iedriverVersion': '3.4.0',
-    # 'chromedriverVersion': '2.40',
-    # 'requireWindowFocus' : True,
-    # 'maxDuration': 1800,
-    # 'idleTimeout': 1000,
+    # 'seleniumVersion': '3.141.59',
+
+    # Sauce Specific Options
+    # 'extendedDebugging': 'true',
+    # 'capturePerformance': 'true',
+    # 'idleTimeout': 180,
     # 'commandTimeout': 600,
-    # 'videoUploadOnPass':False,
-    # 'extendedDebugging':'true',
     # 'prerun':{
     #     'executable': 'https://raw.githubusercontent.com/phillsauce/saucelabs-import-files/master/WinDownloadFiles.bat',
     #     'args': ['--silent'],
     #     'timeout': 500,
     #     'background': 'false',
     # },
+
+    # Browser Specific Options        
     # 'chromeOptions':{
-    #     mobileEmulation':{'deviceName':'iPhone X'},
+    #     'mobileEmulation':{'deviceName':'iPhone X'},
     #     'prefs': {
     #         'profile': {
-    #             'password_manager_enabled': False
+    #             'password_manager_enabled': 'false',
     #             },
-    #             'credentials_enable_service': False,
+    #             'credentials_enable_service': 'false',
     #         },
     #     'args': ['test-type', 'disable-infobars'],
     # },
+
     # 'moz:firefoxOptions':{
-    #     "log": {"level": "trace"},
+    #     'log': {'level': "trace"},
     # },
 }
-
 # This concatenates the tags key above to add the build parameter
 sauceParameters.update({'build': '-'.join(sauceParameters.get('tags'))})
 

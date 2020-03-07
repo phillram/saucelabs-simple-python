@@ -14,7 +14,7 @@ import time
 from datetime import datetime
 from time import sleep
 import multiprocessing
-# from reusableFxns import *
+from reusableFxns import *
 
 ###################################################################
 # Selenium with Python doesn't like using HTTPS correctly
@@ -30,19 +30,16 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 # Set region to 'US' or 'EU'
 # Test will default to 'US' if left blank or set to any other than 'US' or 'EU'
 ###################################################################
-
 region = 'US'
 
 ###################################################################
 # This makes the functions below execute 'run' amount of times
 ###################################################################
-
 run = 2
 
 ###################################################################
 # Declare as a function in order to do multiple runs
 ###################################################################
-
 def run_sauce_test():
     ###################################################################
     # Common parameters (desired capabilities)
@@ -50,41 +47,42 @@ def run_sauce_test():
     ###################################################################
     sauceParameters = {
         'tags':['Case', 'NUM',],
+        'name': 'Run: ' + getNumber(),
         'platform': 'Windows 10',
         'browserName': 'chrome',
-        'version': 'latest',
-        'screenResolution':'1920x1080',
-        'extendedDebugging': 'true',
-        'capturePerformance': 'true'
-        # 'name': 'Run: ' + getNumber(),
-        # 'seleniumVersion': '3.8.1',
-        # 'iedriverVersion': '3.4.0',
-        # 'maxDuration': 1800,
-        # 'idleTimeout': 1000,
+        # The following are not required
+        # 'version': 'latest',
+        # 'screenResolution':'1920x1080',
+        # 'seleniumVersion': '3.141.59',
+
+        # Sauce Specific Options
+        # 'extendedDebugging': 'true',
+        # 'capturePerformance': 'true',
+        # 'idleTimeout': 180,
         # 'commandTimeout': 600,
-        # 'videoUploadOnPass':False,
-        # 'extendedDebugging':'true',
         # 'prerun':{
         #     'executable': 'https://raw.githubusercontent.com/phillsauce/saucelabs-import-files/master/WinDownloadFiles.bat',
         #     'args': ['--silent'],
         #     'timeout': 500,
         #     'background': 'false',
         # },
+
+        # Browser Specific Options        
         # 'chromeOptions':{
-        #     mobileEmulation':{'deviceName':'iPhone X'},
+        #     'mobileEmulation':{'deviceName':'iPhone X'},
         #     'prefs': {
         #         'profile': {
-        #             'password_manager_enabled': False
+        #             'password_manager_enabled': 'false',
         #             },
-        #             'credentials_enable_service': False,
+        #             'credentials_enable_service': 'false',
         #         },
         #     'args': ['test-type', 'disable-infobars'],
         # },
+
         # 'moz:firefoxOptions':{
-        #     "log": {"level": "trace"},
+        #     'log': {'level': "trace"},
         # },
     }
-
     # This concatenates the tags key above to add the build parameter
     sauceParameters.update({'build': '-'.join(sauceParameters.get('tags'))})
 
@@ -146,12 +144,10 @@ def run_sauce_test():
 
 
 
-
 ###################################################################
 # This is the command to use multiprocessing to run the desired
 # amount of times
 ###################################################################
-
 if __name__ == '__main__':
     jobs = [] # Array for the jobs
     for i in range(run): # Run the amount of times set above

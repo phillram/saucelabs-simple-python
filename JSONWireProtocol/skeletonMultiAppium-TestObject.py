@@ -2,7 +2,6 @@
 # Skeleton for Appium tests on Sauce Labs RDC
 ####################################################################
 
-
 ###################################################################
 # Imports that are good to use
 ###################################################################
@@ -27,22 +26,18 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 ###################################################################
 # This makes the functions below execute 'run' amount of times
 ###################################################################
-
 run = 2
 
 ###################################################################
 # Choose if you want Android of iOS capabilities
 # Uncomment one of those lines
 ###################################################################
-
 # androidTest = True
 # iosTest = True
-
 
 ###################################################################
 # Declare as a function in order to do multiple runs
 ###################################################################
-
 def run_sauce_test():
     ###################################################################
     # Common parameters (desired capabilities)
@@ -50,26 +45,25 @@ def run_sauce_test():
     ###################################################################
     projectParameters = {
         'testobject_api_key' : 'APIKEY', # The API generated for the Test Object project
-        'appiumVersion': '1.8.1',
         'name': 'Run: ' + getNumber(),
-        # 'nativeWebTap': True,
+        # The following are not required
+        # 'deviceOrientation' : 'portrait',
+        # 'appiumVersion': '1.16.0',
     }
-    
+
     androidParameters = { # Define Android parameters here
-        'deviceName' : 'Google Pixel',
-        'platformVersion' : '9',
-        'browserName' : 'Chrome',
-        'deviceOrientation' : 'portrait',
+        'deviceName' : '.*Pixel.*',
         'platformName' : 'Android',
+        'browserName' : 'Chrome',
+        'platformVersion' : '10',
     }
-    
+
     iosParameters = { # Define iOS Parameters here
-        'deviceName' : 'iPhone X',
-        'deviceOrientation' : 'portrait',
-        'browserName' : 'safari',
-        'platformVersion' : '11.4.1',
+        'deviceName' : 'iPhone.*',
+        'platformVersion' : '13',
         'platformName' : 'iOS',
-        
+        'browserName' : 'safari',
+        # 'nativeWebTap': 'true',
     }
     
     ###################################################################
@@ -144,14 +138,10 @@ def run_sauce_test():
 
 
 
-
-
-
 ###################################################################
 # This is the command to use multiprocessing to run the desired
 # amount of times
 ###################################################################
-
 if __name__ == '__main__':
     jobs = [] #Array for the jobs
     for i in range(run): # Run the amount of times set above

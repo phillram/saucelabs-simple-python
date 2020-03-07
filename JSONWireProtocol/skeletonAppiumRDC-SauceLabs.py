@@ -45,24 +45,24 @@ region = 'US'
 ###################################################################
 projectParameters = {
     'tags':['Case', 'NUM',],
-    'appiumVersion': '1.16.0',
     'name': 'Run: ' + getNumber(),
+    # The following are not required
+    # 'deviceOrientation' : 'portrait',
+    # 'appiumVersion': '1.16.0',
 }
 
 androidParameters = { # Define Android parameters here
-    'deviceName' : 'Samsung.*',
-    'platformVersion' : '9',
-    'browserName' : 'Chrome',
-    'deviceOrientation' : 'portrait',
+    'deviceName' : '.*Pixel.*',
     'platformName' : 'Android',
+    'browserName' : 'Chrome',
+    'platformVersion' : '10',
 }
 
 iosParameters = { # Define iOS Parameters here
-    'deviceName' : 'iPhone X',
-    'deviceOrientation' : 'portrait',
-    'browserName' : 'safari',
-    'platformVersion' : '12',
+    'deviceName' : 'iPhone.*',
+    'platformVersion' : '13',
     'platformName' : 'iOS',
+    'browserName' : 'safari',
     # 'nativeWebTap': True, # iOS only capability.
 }
 

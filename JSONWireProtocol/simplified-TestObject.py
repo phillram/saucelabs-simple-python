@@ -3,7 +3,6 @@
 # All this does is connect to your project and start a test
 # wait 30 seconds. Then quit test
 ####################################################################
-
 from appium import webdriver
 from time import sleep
 

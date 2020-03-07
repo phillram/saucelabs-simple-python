@@ -10,7 +10,7 @@ from time import sleep
 import sys
 import os
 androidTest = False
-# from reusableFxns import *
+from reusableFxns import *
 iosTest = False
 useApp = False
 
@@ -27,8 +27,7 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 # Choose if you want Android of iOS capabilities
 # Uncomment one of those lines
 ###################################################################
-
-androidTest = True
+# androidTest = True
 # iosTest = True
 
 ###################################################################
@@ -36,56 +35,48 @@ androidTest = True
 # Set region to 'US' or 'EU'
 # Test will default to 'US' if left blank or set to any other than 'US' or 'EU'
 ###################################################################
-
 region = 'US'
 
 ###################################################################
 # Uncomment if this is an app test
 # Add in the location to the stored app too
 ###################################################################
-
 # useApp = True
 appLocation = 'sauce-storage:app.apk'
 
 ###################################################################
 # Common parameters (desired capabilities)
-# For Test Object tests
 ###################################################################
 projectParameters = {
-    'tags':['Case', '1111',],
-    'appiumVersion': '1.8.1',
-    # 'name': 'Run: ' + getNumber(),
+    'tags':['Case', 'NUM',],
+    'name': 'Run: ' + getNumber(),
+    # The following are not required
+    # 'deviceOrientation' : 'portrait',
+    # 'appiumVersion': '1.16.0',
     # 'autoAcceptAlerts':'true',
-    # 'locationServicesEnabled':'true',
-    # 'locationServicesAuthorized':'true',
-    'extendedDebugging': 'true',
-    'capturePerformance': 'true'
 }
 
 androidParameters = { # Define Android parameters here
-    'deviceName' : 'Google Pixel GoogleAPI Emulator',
-    'platformVersion' : '7.1',
+    'deviceName' : 'Android GoogleAPI Emulator',
+    'platformVersion' : '10.0',
     'platformName' : 'Android',
-    'deviceOrientation' : 'portrait',
-
 }
 
 iosParameters = { # Define iOS Parameters here
     'deviceName' : 'iPhone X Simulator',
-    'deviceOrientation' : 'portrait',
-    'platformVersion' : '11.3',
+    'platformVersion' : '13.0',
     'platformName' : 'iOS',
-    # 'nativeWebTap': True, # iOS only capability.
+    # 'nativeWebTap': 'true',
+    # 'locationServicesEnabled':'true', 
+    # 'locationServicesAuthorized':'true',
 }
 
 ###################################################################
 # Merge parameters into a single capability dictionary
 ###################################################################
-
 sauceParameters = {}
 sauceParameters.update(projectParameters)
 sauceParameters.update({'build': '-'.join(projectParameters.get('tags'))}) # This concatenates the tags key above to add the build parameter
-
 
 if androidTest != True and iosTest != True:
     print('You need to specify a platform to test on!')
