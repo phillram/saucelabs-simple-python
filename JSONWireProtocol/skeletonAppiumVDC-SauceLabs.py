@@ -121,35 +121,28 @@ elif region == 'EU':
 # Test logic goes here
 ###################################################################
 # Navigating to a website
-#__________________________________________________________________
-driver.get('https://www.dryzz.com')
+driver.get('https://www.google.com')
 
-# Setup for finding an element and clicking it
-#__________________________________________________________________
-interact = driver.find_element_by_id('menu-item-112')
-interact.click()
+# Finding an element
+interact = driver.find_element_by_name('q')
 
-# Setup for finding an element and sending keystrokes
-#__________________________________________________________________
-# interact = driver.find_element_by_class_name('figure')
-# interact.send_keys('Dryzz')
-# interact.submit()
+# Using the selected element
+interact.send_keys('chupacabra')
+interact.submit()
+# interact.click()
 
-# Setup for using random Python commands
-#__________________________________________________________________
+# Saving an extra screenshot
 # driver.save_screenshot('screenshot.png')
-# sleep(10)
-# print('Message')
 
-# Setup for using Action chains
-#__________________________________________________________________
+# Using Action chains
 # ActionChains(driver).move_to_element(interact).perform()
 
-# Setup for random script executions
-#__________________________________________________________________
+# Sauce Labs specific executors
 # driver.execute_script('sauce: break')
-# driver.execute_script('sauce:context=Place words here for notes')
+# driver.execute_script('sauce:context=Notes here')
+
+# Setting the job status to passed
+driver.execute_script('sauce:job-result=passed')
 
 # Ending the test session
-#__________________________________________________________________
 driver.quit()
