@@ -42,7 +42,7 @@ sauceParameters = {
     'browserName': 'chrome',
     # The following are not required
     # 'version': 'latest',
-    # 'screenResolution':'1920x1080',
+    'screenResolution':'1920x1080',
     # 'seleniumVersion': '3.141.59',
 
     # Sauce Specific Options

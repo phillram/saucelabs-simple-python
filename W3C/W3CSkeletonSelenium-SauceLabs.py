@@ -44,7 +44,7 @@ sauceParameters = {
     'sauce:options':{
         'tags':['Case', 'NUM',],
         'name': 'Run: ' + getNumber(),
-        # 'screenResolution':'1920x1080',
+        'screenResolution':'1920x1080',
         # 'extendedDebugging': 'true',
         # 'capturePerformance': 'true',
         # 'idleTimeout': 180,
