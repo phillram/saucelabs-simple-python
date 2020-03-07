@@ -15,7 +15,6 @@ import time
 from datetime import datetime
 from time import sleep
 from reusableFxns import *
-# from ./ import reusableFxns
 
 ###################################################################
 # Selenium with Python doesn't like using HTTPS correctly
@@ -28,7 +27,6 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 ###################################################################
 # Common parameters (desired capabilities)
-# For Sauce Labs Tests
 ###################################################################
 screenerParameters = {
     # These Screener capablities are required. You'll find the apiKey and group name in the Screener.io dashboard
@@ -38,45 +36,45 @@ screenerParameters = {
         'apiKey': os.environ['SCREENER_API_KEY'],
         'group': os.environ['SCREENER_GROUP_KEY'],
         'name': 'Visual Test',
-        'resolution': '1280x1024',
+        'resolution': '1920x1080',
         'proxy': 'https://'+os.environ['SAUCE_USERNAME']+':'+os.environ['SAUCE_ACCESS_KEY']+'@ondemand.saucelabs.com/wd/hub',
         # 'proxy': 'https://' + os.environ['SAUCE_USERNAME'] + ':' + os.environ['SAUCE_ACCESS_KEY'] + '@ondemand.eu-central-1.saucelabs.com',
     },
-    # These are the capabilities that Selenium / Sauce Labs will use
-    'tags':['Screener','Tests',],
-    'platform': 'Windows 10',
-    'browserName': 'firefox',
-    'version': 'latest',
-    # 'screenResolution':'1400x1050',
+
+    # Sauce Specific Options
+    'tags':['Screener', 'Tests',],
     'name': 'Run: ' + getNumber(),
-    # 'tunnelIdentifier':'Phill Tunnel One',
-    'seleniumVersion': '3.141.0',
-    # 'iedriverVersion': '3.4.0',
-    # 'chromedriverVersion': '2.40',
-    # 'requireWindowFocus' : True,
-    # 'maxDuration': 1800,
-    # 'idleTimeout': 1000,
+    'platform': 'Windows 10',
+    'browserName': 'chrome',
+    'screenResolution':'1920x1080',
+    # The following are not required
+    # 'version': 'latest',
+    # 'seleniumVersion': '3.141.59',
+    # 'extendedDebugging': 'true',
+    # 'capturePerformance': 'true',
+    # 'idleTimeout': 180,
     # 'commandTimeout': 600,
-    # 'videoUploadOnPass':False,
-    # 'extendedDebugging':'true',
-    # 'prerun':{ 
+    # 'prerun':{
     #     'executable': 'https://raw.githubusercontent.com/phillsauce/saucelabs-import-files/master/WinDownloadFiles.bat',
     #     'args': ['--silent'],
     #     'timeout': 500,
     #     'background': 'false',
     # },
+
+    # Browser Specific Options        
     # 'chromeOptions':{
-    #     mobileEmulation':{'deviceName':'iPhone X'},
+    #     'mobileEmulation':{'deviceName':'iPhone X'},
     #     'prefs': {
     #         'profile': {
-    #             'password_manager_enabled': False
+    #             'password_manager_enabled': 'false',
     #             },
-    #             'credentials_enable_service': False,
+    #             'credentials_enable_service': 'false',
     #         },
     #     'args': ['test-type', 'disable-infobars'],
     # },
+
     # 'moz:firefoxOptions':{
-    #     'log': {'level': 'trace'},
+    #     'log': {'level': "trace"},
     # },
 }
 
@@ -94,44 +92,36 @@ driver = webdriver.Remote(
 # Test logic goes here
 ###################################################################
 # Navigating to a website
-#__________________________________________________________________
-driver.get('https://www.dryzz.com')
+driver.get('https://www.google.com')
 
 # Taking a screenshot on Screener
 # Syntax dictates the screener.snapshop takes the picture
 #   and the 'Homepage' part is what the screenshot is called
-#__________________________________________________________________
-driver.execute_script('/*@screener.snapshot*/', 'Homepage')
+driver.execute_script('/*@screener.snapshot*/', 'Google Homepage')
 
-# Setup for finding an element and clicking it
-#__________________________________________________________________
-interact = driver.find_element_by_id('menu-item-112')
-interact.click()
-driver.execute_script('/*@screener.snapshot*/', 'Projects')
+# Finding an element
+interact = driver.find_element_by_name('q')
 
-# Setup for finding an element and sending keystrokes
-#__________________________________________________________________
-# interact = driver.find_element_by_class_name('figure')
-# interact.send_keys('Dryzz')
-# interact.submit()
+# Using the selected element
+interact.send_keys('chupacabra')
+interact.submit()
+# interact.click()
 
-# Setup for using random Python commands
-#__________________________________________________________________
+driver.execute_script('/*@screener.snapshot*/', 'Chupacabra Results')
+
+# Saving an extra screenshot
 # driver.save_screenshot('screenshot.png')
-# sleep(10)
-# print('Message')
 
-# Setup for using Action chains
-#__________________________________________________________________
+# Using Action chains
 # ActionChains(driver).move_to_element(interact).perform()
 
-# Setup for random script executions
-#__________________________________________________________________
+# Sauce Labs specific executors
 # driver.execute_script('sauce: break')
-# driver.execute_script('sauce:context=Place words here for notes')
-# driver.execute_script('sauce: job-result=passed')
+# driver.execute_script('sauce:context=Notes here')
+
+# Setting the job status to passed
+driver.execute_script('sauce:job-result=passed')
 
 # Ending the test session
-#__________________________________________________________________
 driver.quit()
 
