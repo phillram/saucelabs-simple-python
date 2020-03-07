@@ -41,7 +41,6 @@ run = 2
 def run_sauce_test():
     ###################################################################
     # Common parameters (desired capabilities)
-    # For Test Object tests
     ###################################################################
     projectParameters = {
         'testobject_api_key' : 'APIKEY', # The API generated for the Test Object project

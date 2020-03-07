@@ -34,7 +34,6 @@ region = 'US'
 
 ###################################################################
 # Common parameters (desired capabilities)
-# For Sauce Labs Tests
 ###################################################################
 sauceParameters = {
     'tags':['Case', 'NUM',],

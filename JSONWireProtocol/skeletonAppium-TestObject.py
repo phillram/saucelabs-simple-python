@@ -33,7 +33,6 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 ###################################################################
 # Common parameters (desired capabilities)
-# For Test Object tests
 ###################################################################
 projectParameters = {
     'testobject_api_key' : 'APIKEY', # The API generated for the Test Object project

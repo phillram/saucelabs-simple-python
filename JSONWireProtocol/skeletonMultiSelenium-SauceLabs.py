@@ -43,7 +43,6 @@ run = 2
 def run_sauce_test():
     ###################################################################
     # Common parameters (desired capabilities)
-    # For Sauce Labs Tests
     ###################################################################
     sauceParameters = {
         'tags':['Case', 'NUM',],

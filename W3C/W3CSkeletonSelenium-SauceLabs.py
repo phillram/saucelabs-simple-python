@@ -14,7 +14,7 @@ import os
 import time
 from datetime import datetime
 from time import sleep
-# from reusableFxns import *
+from reusableFxns import *
 
 ###################################################################
 # Selenium with Python doesn't like using HTTPS correctly
@@ -30,37 +30,25 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 # Set region to 'US' or 'EU'
 # Test will default to 'US' if left blank or set to any other than 'US' or 'EU'
 ###################################################################
-
 region = 'US'
 
 ###################################################################
 # Common parameters (desired capabilities)
-# For Sauce Labs Tests
 ###################################################################
 sauceParameters = {
-    # Required platform information
     'platformName': 'Windows 10',
-    'browserName': 'firefox',
+    'browserName': 'chrome',
     'browserVersion': 'latest',
 
-    # Options used by Sauce Labs
+    # Sauce Specific Options
     'sauce:options':{
         'tags':['Case', 'NUM',],
-        # 'name': 'Run: ' + getNumber(),
-        'extendedDebugging': 'true',
-        'capturePerformance': 'true',
-        # "webdriver.remote.quietExceptions": 'true',
-        # 'tunnelIdentifier':'Phill Tunnel One',
+        'name': 'Run: ' + getNumber(),
         # 'screenResolution':'1920x1080',
-        'seleniumVersion': '3.141.59',
-        # 'iedriverVersion': '3.4.0',
-        # 'chromedriverVersion': '2.40',
-        # 'requireWindowFocus' : True,
-        # 'maxDuration': 1800,
-        # 'idleTimeout': 1000,
+        # 'extendedDebugging': 'true',
+        # 'capturePerformance': 'true',
+        # 'idleTimeout': 180,
         # 'commandTimeout': 600,
-        # 'videoUploadOnPass':False,
-        # 'extendedDebugging':'true',
         # 'prerun':{
         #     'executable': 'https://raw.githubusercontent.com/phillsauce/saucelabs-import-files/master/WinDownloadFiles.bat',
         #     'args': ['--silent'],
@@ -69,7 +57,7 @@ sauceParameters = {
         # },
     },
 
-    # W3C Options used by Chrome
+    # Browser Specific Options
     # 'goog:chromeOptions':{
         # 'w3c': True,    # Required for a W3C Chrome test
         # 'mobileEmulation':{'deviceName':'iPhone X'},
@@ -86,19 +74,17 @@ sauceParameters = {
     # 'moz:firefoxOptions':{
         # "log": {"level": "trace"},
     # },
-    
-    # W3C Options used by Internet Explorer
+
     # 'se:ieOptions': {
+        # 'avoidProxy':'true',
         # 'browserCommandLineSwitches': '-k',
         # 'nativeEvents': 'false',
         # 'requireWindowFocus': 'true',
         # 'initialBrowserUrl': 'about:blank',
         # 'enablePersistentHover': 'true',
         # 'forceCreateProcessApi': 'true',
-        # 'avoidProxy':'true',
     # },
 }
-
 
 # This concatenates the tags key above to add the build parameter
 sauceParameters['sauce:options'].update({'build': '-'.join(sauceParameters['sauce:options'].get('tags'))})

@@ -41,7 +41,6 @@ region = 'US'
 
 ###################################################################
 # Common parameters (desired capabilities)
-# For Test Object tests
 ###################################################################
 projectParameters = {
     'tags':['Case', 'NUM',],
