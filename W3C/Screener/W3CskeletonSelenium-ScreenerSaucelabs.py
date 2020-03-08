@@ -45,24 +45,26 @@ screenerParameters = {
     },
 
     # Sauce Specific Options
-    'tags':['Screener', 'Tests',],
-    'name': random_pokemon,
-    'platform': 'Windows 10',
-    'browserName': 'chrome',
-    'screenResolution':'1920x1080',
-    # The following are not required
-    # 'version': 'latest',
-    # 'seleniumVersion': '3.141.59',
-    # 'extendedDebugging': 'true',
-    # 'capturePerformance': 'true',
-    # 'idleTimeout': 180,
-    # 'commandTimeout': 600,
-    # 'prerun':{
-    #     'executable': 'https://raw.githubusercontent.com/phillsauce/saucelabs-import-files/master/WinDownloadFiles.bat',
-    #     'args': ['--silent'],
-    #     'timeout': 500,
-    #     'background': 'false',
-    # },
+    'sauce:options':{
+        'tags':['Screener', 'Tests',],
+        'name': random_pokemon,
+        'platform': 'Windows 10',
+        'browserName': 'chrome',
+        'screenResolution':'1920x1080',
+        # The following are not required
+        # 'version': 'latest',
+        # 'seleniumVersion': '3.141.59',
+        # 'extendedDebugging': 'true',
+        # 'capturePerformance': 'true',
+        # 'idleTimeout': 180,
+        # 'commandTimeout': 600,
+        # 'prerun':{
+        #     'executable': 'https://raw.githubusercontent.com/phillsauce/saucelabs-import-files/master/WinDownloadFiles.bat',
+        #     'args': ['--silent'],
+        #     'timeout': 500,
+        #     'background': 'false',
+        # },
+    },
 
     # Browser Specific Options        
     # 'chromeOptions':{
@@ -82,7 +84,7 @@ screenerParameters = {
 }
 
 # This concatenates the tags key above to add the build parameter
-screenerParameters.update({'build': '-'.join(screenerParameters.get('tags'))})
+screenerParameters['sauce:options'].update({'build': '-'.join(screenerParameters['sauce:options'].get('tags'))})
 
 ###################################################################
 # Connect to Screener
