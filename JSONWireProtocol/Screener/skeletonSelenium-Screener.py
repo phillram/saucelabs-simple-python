@@ -9,8 +9,6 @@ from selenium import webdriver
 from time import sleep
 import os
 import urllib3
-import json
-import random
 
 ###################################################################
 # Selenium with Python doesn't like using HTTPS correctly
@@ -19,13 +17,6 @@ import random
 # But I should find a way to do the proper requests
 ###################################################################
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
-
-###################################################################
-# Pull a random Pokemon name to use as the test name
-###################################################################
-pokemon_names_url = urllib3.PoolManager().request('GET', 'https://raw.githubusercontent.com/sindresorhus/pokemon/master/data/en.json')
-pokemon_names = json.loads(pokemon_names_url.data.decode('utf-8'))
-random_pokemon = random.choice(pokemon_names)
 
 ###################################################################
 # Common parameters (desired capabilities)
@@ -84,9 +75,6 @@ interact.submit()
 # interact.click()
 
 driver.execute_script('/*@screener.snapshot*/', 'Chupacabra Results')
-
-# Saving an extra screenshot
-# driver.save_screenshot('screenshot.png')
 
 # Using Action chains
 # ActionChains(driver).move_to_element(interact).perform()
