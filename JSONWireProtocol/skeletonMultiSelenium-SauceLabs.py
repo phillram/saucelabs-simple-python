@@ -22,13 +22,6 @@ import random
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 ###################################################################
-# Pull a random Pokemon name to use as the test name
-###################################################################
-pokemon_names_url = urllib3.PoolManager().request('GET', 'https://raw.githubusercontent.com/sindresorhus/pokemon/master/data/en.json')
-pokemon_names = json.loads(pokemon_names_url.data.decode('utf-8'))
-random_pokemon = random.choice(pokemon_names)
-
-###################################################################
 # Select Data Center
 # Set region to 'US' or 'EU'
 # Test will default to 'US' if left blank or set to any other than 'US' or 'EU'
@@ -44,6 +37,13 @@ run = 2
 # Declare as a function in order to do multiple runs
 ###################################################################
 def run_sauce_test():
+    ###################################################################
+    # Pull a random Pokemon name to use as the test name
+    ###################################################################
+    pokemon_names_url = urllib3.PoolManager().request('GET', 'https://raw.githubusercontent.com/sindresorhus/pokemon/master/data/en.json')
+    pokemon_names = json.loads(pokemon_names_url.data.decode('utf-8'))
+    random_pokemon = random.choice(pokemon_names)
+
     ###################################################################
     # Common parameters (desired capabilities)
     ###################################################################
