@@ -72,7 +72,7 @@ sauceParameters = {
     # },
 
     # 'moz:firefoxOptions':{
-    #     'log': {'level': "trace"},
+    #     'log': {'level': 'trace'},
     # },
 }
 # This concatenates the tags key above to add the build parameter
@@ -87,12 +87,12 @@ except NameError:
     region = 'US'
 
 if region != 'EU':
-    print("You are using the US data center")
+    print('You are using the US data center')
     driver = webdriver.Remote(
         command_executor='https://'+os.environ['SAUCE_USERNAME']+':'+os.environ['SAUCE_ACCESS_KEY']+'@ondemand.saucelabs.com:443/wd/hub',
         desired_capabilities=sauceParameters)
 elif region == 'EU':
-    print ("You are using the EU data center")
+    print ('You are using the EU data center')
     driver = webdriver.Remote(
         command_executor='https://'+os.environ['SAUCE_USERNAME']+':'+os.environ['SAUCE_ACCESS_KEY']+'@ondemand.eu-central-1.saucelabs.com:443/wd/hub',
         desired_capabilities=sauceParameters)

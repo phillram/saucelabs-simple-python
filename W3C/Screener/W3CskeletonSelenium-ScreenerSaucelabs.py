@@ -79,7 +79,7 @@ screenerParameters = {
     # },
 
     # 'moz:firefoxOptions':{
-    #     'log': {'level': "trace"},
+    #     'log': {'level': 'trace'},
     # },
 }
 
