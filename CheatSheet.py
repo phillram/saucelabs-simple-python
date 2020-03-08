@@ -150,5 +150,10 @@ eu_west_dc = 'ondemand.us-east-1.saucelabs.com/wd/hub'
 ###################################################################
 driver.execute_script('/*@screener.snapshot*/', 'Google Homepage')
 
+###################################################################
+# Back up URL for Pokemon names
+###################################################################
+https://gist.github.com/phillram/1e710297e700d9b82dbcc64b6415253e
+https://gist.githubusercontent.com/phillram/1e710297e700d9b82dbcc64b6415253e/raw/8b4c3aa15ec865af6db0bfa33bff70f6bd3c01c9/pokemon_names.json
 
 
