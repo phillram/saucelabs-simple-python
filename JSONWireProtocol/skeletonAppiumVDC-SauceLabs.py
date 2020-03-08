@@ -59,8 +59,8 @@ appLocation = 'sauce-storage:app.apk'
 ###################################################################
 projectParameters = {
     'tags':['Case', 'NUM',],
-    'name': random_pokemon,
     # The following are not required
+    'name': random_pokemon,
     # 'deviceOrientation' : 'portrait',
     # 'appiumVersion': '1.16.0',
     # 'autoAcceptAlerts':'true',

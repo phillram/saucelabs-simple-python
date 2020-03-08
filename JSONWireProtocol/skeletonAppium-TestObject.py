@@ -44,8 +44,8 @@ random_pokemon = random.choice(pokemon_names)
 ###################################################################
 projectParameters = {
     'testobject_api_key' : 'APIKEY', # The API generated for the Test Object project
-    'name': random_pokemon,
     # The following are not required
+    'name': random_pokemon,
     # 'deviceOrientation' : 'portrait',
     # 'appiumVersion': '1.16.0',
 }

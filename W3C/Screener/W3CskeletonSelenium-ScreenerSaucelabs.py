@@ -47,11 +47,11 @@ screenerParameters = {
     # Sauce Specific Options
     'sauce:options':{
         'tags':['Screener', 'Tests',],
-        'name': random_pokemon,
         'platform': 'Windows 10',
         'browserName': 'chrome',
         'screenResolution':'1920x1080',
         # The following are not required
+        'name': random_pokemon,
         # 'version': 'latest',
         # 'seleniumVersion': '3.141.59',
         # 'extendedDebugging': 'true',
