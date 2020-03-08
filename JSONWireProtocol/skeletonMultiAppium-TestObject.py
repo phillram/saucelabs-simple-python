@@ -134,7 +134,6 @@ def run_sauce_test():
     driver.quit()
 
 
-
 ###################################################################
 # This is the command to use multiprocessing to run the desired
 # amount of times
