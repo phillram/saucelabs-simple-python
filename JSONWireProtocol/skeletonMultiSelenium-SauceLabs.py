@@ -2,19 +2,16 @@
 # Skeleton for Multi Testing Selenium tests on Sauce Labs
 ####################################################################
 
-
 ###################################################################
 # Imports that are good to use
 ###################################################################
 from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
-import os
-import time
-from datetime import datetime
 from time import sleep
 import multiprocessing
-from reusableFxns import *
+import os
+import urllib3
+import json
+import random
 
 ###################################################################
 # Selenium with Python doesn't like using HTTPS correctly
@@ -22,8 +19,14 @@ from reusableFxns import *
 # The following disables that warning to clear the clutter
 # But I should find a way to do the proper requests
 ###################################################################
-import urllib3
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+
+###################################################################
+# Pull a random Pokemon name to use as the test name
+###################################################################
+pokemon_names_url = urllib3.PoolManager().request('GET', 'https://raw.githubusercontent.com/sindresorhus/pokemon/master/data/en.json')
+pokemon_names = json.loads(pokemon_names_url.data.decode('utf-8'))
+random_pokemon = random.choice(pokemon_names)
 
 ###################################################################
 # Select Data Center
@@ -46,7 +49,7 @@ def run_sauce_test():
     ###################################################################
     sauceParameters = {
         'tags':['Case', 'NUM',],
-        'name': 'Run: ' + getNumber(),
+        'name': random_pokemon,
         'platform': 'Windows 10',
         'browserName': 'chrome',
         # The following are not required

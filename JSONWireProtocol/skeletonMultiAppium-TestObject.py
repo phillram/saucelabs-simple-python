@@ -8,9 +8,12 @@
 from appium import webdriver
 from time import sleep
 import multiprocessing
-import sys
-from reusableFxns import *
+import urllib3
 import requests
+import json
+import random
+import sys
+
 androidTest = False
 iosTest = False
 
@@ -20,8 +23,14 @@ iosTest = False
 # The following disables that warning to clear the clutter
 # But I should find a way to do the proper requests
 ###################################################################
-import urllib3
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+
+###################################################################
+# Pull a random Pokemon name to use as the test name
+###################################################################
+pokemon_names_url = urllib3.PoolManager().request('GET', 'https://raw.githubusercontent.com/sindresorhus/pokemon/master/data/en.json')
+pokemon_names = json.loads(pokemon_names_url.data.decode('utf-8'))
+random_pokemon = random.choice(pokemon_names)
 
 ###################################################################
 # This makes the functions below execute 'run' amount of times
@@ -44,7 +53,7 @@ def run_sauce_test():
     ###################################################################
     projectParameters = {
         'testobject_api_key' : 'APIKEY', # The API generated for the Test Object project
-        'name': 'Run: ' + getNumber(),
+        'name': random_pokemon,
         # The following are not required
         # 'deviceOrientation' : 'portrait',
         # 'appiumVersion': '1.16.0',

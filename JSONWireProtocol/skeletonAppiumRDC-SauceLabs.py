@@ -8,11 +8,12 @@
 ###################################################################
 from appium import webdriver
 from time import sleep
-import sys
 import os
-import time
-from reusableFxns import *
-import requests
+import urllib3
+import json
+import random
+import sys
+
 androidTest = False
 iosTest = False
 
@@ -22,8 +23,14 @@ iosTest = False
 # The following disables that warning to clear the clutter
 # But I should find a way to do the proper requests
 ###################################################################
-import urllib3
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+
+###################################################################
+# Pull a random Pokemon name to use as the test name
+###################################################################
+pokemon_names_url = urllib3.PoolManager().request('GET', 'https://raw.githubusercontent.com/sindresorhus/pokemon/master/data/en.json')
+pokemon_names = json.loads(pokemon_names_url.data.decode('utf-8'))
+random_pokemon = random.choice(pokemon_names)
 
 ###################################################################
 # Choose if you want Android of iOS capabilities
@@ -44,7 +51,7 @@ region = 'US'
 ###################################################################
 projectParameters = {
     'tags':['Case', 'NUM',],
-    'name': 'Run: ' + getNumber(),
+    'name': random_pokemon,
     # The following are not required
     # 'deviceOrientation' : 'portrait',
     # 'appiumVersion': '1.16.0',
@@ -62,7 +69,7 @@ iosParameters = { # Define iOS Parameters here
     'platformVersion' : '13',
     'platformName' : 'iOS',
     'browserName' : 'safari',
-    # 'nativeWebTap': True, # iOS only capability.
+    # 'nativeWebTap': 'true',
 }
 
 ###################################################################

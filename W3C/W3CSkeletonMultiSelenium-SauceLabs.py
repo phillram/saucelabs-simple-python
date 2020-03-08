@@ -6,14 +6,12 @@
 # Imports that are good to use
 ###################################################################
 from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
-import os
-import time
-from datetime import datetime
 from time import sleep
+import os
+import urllib3
+import json
+import random
 import multiprocessing
-from reusableFxns import *
 
 ###################################################################
 # Selenium with Python doesn't like using HTTPS correctly
@@ -21,8 +19,14 @@ from reusableFxns import *
 # The following disables that warning to clear the clutter
 # But I should find a way to do the proper requests
 ###################################################################
-import urllib3
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+
+###################################################################
+# Pull a random Pokemon name to use as the test name
+###################################################################
+pokemon_names_url = urllib3.PoolManager().request('GET', 'https://raw.githubusercontent.com/sindresorhus/pokemon/master/data/en.json')
+pokemon_names = json.loads(pokemon_names_url.data.decode('utf-8'))
+random_pokemon = random.choice(pokemon_names)
 
 ###################################################################
 # This makes the functions below execute 'run' amount of times
@@ -52,7 +56,7 @@ def run_sauce_test():
         # Sauce Specific Options
         'sauce:options':{
             'tags':['Case', 'NUM',],
-            'name': 'Run: ' + getNumber(),
+            'name': random_pokemon,
             'screenResolution':'1920x1080',
             # 'extendedDebugging': 'true',
             # 'capturePerformance': 'true',
